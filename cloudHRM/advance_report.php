@@ -134,10 +134,10 @@ if ($_POST['year'] != '') {
               <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Employee</label>
               <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
                 <input list="pbi" type="text" name="PBI_ID" class="form-control" autocomplete="off" class="form-control">
-                <datalist id="pbi">
-                  <option></option>
-                  <? foreign_relation('personnel_basic_info', 'PBI_ID', 'concat(PBI_CODE,"-",PBI_NAME)', $PBI_ID, '1'); ?>
-                </datalist>
+				  <datalist  id="pbi" >
+                      <option></option>
+                          <? foreign_relation('personnel_basic_info','PBI_ID','concat(PBI_CODE,"-",PBI_NAME)',$PBI_ID , '1') ;?>
+                  </datalist>  
               </div>
             </div>
           </div>
@@ -355,11 +355,11 @@ if ($_POST['year'] != '') {
           </tr>
 
           <tr>
-            <td><input type="radio" id="5" placeholder="test 2" id="report" name="report" value="85" /></td>
-            <td class="bold" align="left"> <label for="5">Salary Summary Sheet (Department)</label> </td>
+            <td><input type="radio" id="5" placeholder="test 2" id="report" name="report" value="788" /></td>
+            <td class="bold" align="left"> <label for="5">Bank Salary Advice</label> </td>
 
-            <td><input type="radio" id="5" placeholder="test 2" id="report" name="report" value="86" /></td>
-            <td class="bold" align="left"> <label for="5">Salary Summary Sheet (Designation)</label> </td>
+            <td></td>
+            <td class="bold" align="left"> <label for="3"></label> </td>
           </tr>
 
 
