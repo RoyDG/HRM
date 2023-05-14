@@ -252,30 +252,41 @@ if (isset($$unique)) {
                             </div>
 
                         </div>
+											
+						
+						
+						<div class="form-group row m-0 pb-1">
+							
+                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Gross Salary :</label>
+						
+
+                            <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">	
+                                <input name="<?= $unique ?>" id="<?= $unique ?>" value="<?= $$unique ?>" type="hidden" />
+								           
+                                <input name="gross_salary" type="text" id="gross-salary" class="form-control" oninput="calculateSalary()" value="<?= $gross_salary ?>" />								
+                            </div>
+							
+                        </div>
 
 
 
                         <div class="form-group row m-0 pb-1">
-
-                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Basic</label>
+                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Basic :</label>
 
                             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
-
                                 <input name="<?= $unique ?>" id="<?= $unique ?>" value="<?= $$unique ?>" type="hidden" />
 
                                 <input type="hidden" id="gender" value="<?= find_a_field('personnel_basic_info', 'PBI_SEX', 'PBI_ID=' . $_SESSION['employee_selected']); ?>" />
 
                                 <input type="text" name="basic_salary" id="basic-salary" class="form-control" readonly="" value="<?= $basic_salary ?>" />
-
                             </div>
-
                         </div>
 
 
 
                         <div class="form-group row m-0 pb-1">
 
-                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">House Rent </label>
+                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">House Rent :</label>
 
                             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
 
@@ -289,7 +300,7 @@ if (isset($$unique)) {
 
                         <div class="form-group row m-0 pb-1">
 
-                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Medical Allowance </label>
+                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Medical Allowance :</label>
 
                             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
 
@@ -303,7 +314,7 @@ if (isset($$unique)) {
 
                         <div class="form-group row m-0 pb-1">
 
-                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Conveyance Allowance</label>
+                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Conveyance Allowance :</label>
 
                             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
 
@@ -333,7 +344,7 @@ if (isset($$unique)) {
 
                         <div class="form-group row m-0 pb-1">
 
-                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Consolidated Salary</label>
+                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Consolidated Salary :</label>
 
                             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
 
@@ -347,7 +358,7 @@ if (isset($$unique)) {
 
                         <div class="form-group row m-0 pb-1">
 
-                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Overtime Applicable?</label>
+                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Overtime Applicable? :</label>
 
                             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
 
@@ -369,7 +380,7 @@ if (isset($$unique)) {
 
                         <div class="form-group row m-0 pb-1">
 
-                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Monthly Income Tax</label>
+                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Monthly Income Tax :</label>
 
                             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
 
@@ -389,7 +400,7 @@ if (isset($$unique)) {
 
                         <div class="form-group row m-0 pb-1">
 
-                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Account No </label>
+                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Account No :</label>
 
                             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
 
@@ -403,19 +414,18 @@ if (isset($$unique)) {
 
                         <div class="form-group row m-0 pb-1">
 
-                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Salary Given by</label>
+                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Salary Given by :</label>
 
                             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
 
-                                <select name="cash_bank" id="cash_bank" class="form-control">
+                                <select name="cash_bank" id="cash_bank" class="form-control" onchange="calculateAmount()">
 
                                     <option></option>
+										  <option <?=($cash_bank=='Bank')?'selected':'';?> value="Bank">Bank</option>
 
-                                    <option <?= ($cash_bank == 'Bank') ? 'selected' : ''; ?>>Bank</option>
+										  <option <?=($cash_bank=='Cash')?'selected':'';?> value="Cash">Cash</option>
 
-                                    <option <?= ($cash_bank == 'Cash') ? 'selected' : ''; ?>>Cash</option>
-
-                                    <option <?= ($cash_bank == 'Bank+Cash') ? 'selected' : ''; ?>>Bank+Cash</option>
+										  <option <?=($cash_bank=='Both')?'selected':'';?> value="Both">Bank+Cash</option>
 
                                 </select>
 
@@ -427,11 +437,11 @@ if (isset($$unique)) {
 
                         <div class="form-group row m-0 pb-1">
 
-                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Cash Paid</label>
+                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Cash Paid :</label>
 
                             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
 
-                                <input name="cash_amt" type="text" id="cash_amt" value="<?= $cash_amt ?>" />
+                                <input name="cash_amt" type="text" id="cash_amt" onkeyup="calculateAmount()" value="<?= $cash_amt ?>" />
 
                             </div>
 
@@ -441,7 +451,7 @@ if (isset($$unique)) {
 
                         <div class="form-group row m-0 pb-1">
 
-                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Bank Paid</label>
+                            <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Bank Paid :</label>
 
                             <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
 
@@ -481,11 +491,11 @@ if (isset($$unique)) {
 
                     <div class="form-group row m-0">
 
-                        <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Gross Salary</label>
+                        <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Total Salary :</label>
 
                         <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9 p-0">
 
-                            <input name="gross_salary" type="text" id="gross-salary" class="form-control" oninput="calculateSalary()" value="<?= $gross_salary ?>" />
+                            <input name="total_salary" type="text" id="total_salary" class="form-control" readonly="" value="<?= $total_salary ?>" />
 
                         </div>
 
@@ -499,8 +509,7 @@ if (isset($$unique)) {
 
                     <div class="form-group row m-0">
 
-                        <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text"> Total Payable</label>
-
+                        <label class="col-sm-3 col-md-3 col-lg-3 col-xl-3 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text"> Total Payable :</label>
                         <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9 p-0">
 
                             <input name="total_payable" type="text" id="total-payable" value="<?= $total_payable ?>" readonly="" class="form-control" />
@@ -543,22 +552,12 @@ if (isset($$unique)) {
 
         var genders = document.getElementById('gender').value;
 
-
-
-
-
         var male_tax_income = (basicSalary * 14) - 300000;
 
         var female_tax_income = (basicSalary * 14) - 350000;
-
-
-
-
+		
 
         if (genders == 'Male') {
-
-
-
             if (grossSalary < 80000 && male_tax_income > 0) {
 
                 tax = male_tax_income * 0.05;
@@ -607,8 +606,9 @@ if (isset($$unique)) {
 
 
         var monthly_tax = tax / 12;
-
+		var totalSalary = grossSalary;
         var totalPayable = grossSalary - (tax / 12);
+		
 
         document.getElementById("house_rent").value = Math.round(houseRent);
 
@@ -619,13 +619,10 @@ if (isset($$unique)) {
         document.getElementById("basic-salary").value = Math.round(basicSalary);
 
         document.getElementById("monthly_tax").value = Math.round(monthly_tax);
+		
+		document.getElementById("total_salary").value = Math.round(totalSalary);
 
         document.getElementById("total-payable").value = Math.round(totalPayable);
-
-
-
-
-
 
 
         /*document.getElementById("house-rent").value = houseRent.toFixed(2);
@@ -641,6 +638,57 @@ if (isset($$unique)) {
         document.getElementById("total-payable").value = totalPayable.toFixed(2);*/
 
     }
+	
+	
+	
+	
+function calculateAmount() {
+  var grossSalary = ((document.getElementById("gross-salary").value)*1);
+
+  
+  var paymentType = document.getElementById("cash_bank").value;
+  //var totalAmount = document.getElementById("totalAmount");
+  var cashAmount = document.getElementById("cash_amt");
+  var bankAmount = document.getElementById("bank_amt");
+  
+  if (paymentType === "Cash") {
+    cashAmount.value = grossSalary;
+    bankAmount.value = "";
+
+	
+   
+  } else if (paymentType === "Bank") {
+    cashAmount.value = "";
+	
+    bankAmount.value = grossSalary;
+  
+  } else if (paymentType === "Both") {
+   
+
+        var cashInput = document.getElementById("cash_amt").value*1; // get the user input for cash amount
+        
+		var cashAmt = Number(cashInput); // convert user input to a number
+        var bankAmt = grossSalary - cashAmt; // calculate bank amount
+        
+        cashAmount.value = cashAmt;
+        bankAmount.value = bankAmt;
+     
+		
+		
+      
+ 
+  } else {
+    cashAmount.value = "";
+    bankAmount.value = "";
+	
+   
+  }
+}
+
+	
+	
+	
+	
 </script>
 
 

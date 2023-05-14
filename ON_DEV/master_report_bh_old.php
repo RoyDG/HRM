@@ -12112,9 +12112,10 @@ $signature_a = '';
     </div>-->
 
 
-        <!-- Bhaiya Housing salary report start -->
+            <!-- Bhaiya Housing salary report start -->
 
-        <?
+          <?
+
         }
         if ($_POST['report'] == 789) {
 
@@ -12142,7 +12143,7 @@ $signature_a = '';
                     <div align="center">Designation</div>
                   </th>
                   <th rowspan="2">
-                    <div align="center">Payment Type</div>
+                    <div align="center">Branch</div>
                   </th>
                   <th rowspan="2">
                     <div align="center">Department</div>
@@ -12244,10 +12245,7 @@ $signature_a = '';
                 $m_s_date = $_POST['year'] . '-' . $_POST['mon'] . '-' . '01';
                 $m_e_date = $_POST['year'] . '-' . $_POST['mon'] . '-' . '31';
 
-                $sqld = 'select t.*, a.PBI_ID,a.PBI_CODE, a.PBI_NAME, a.PBI_DOJ, 
-                (select DESG_DESC from designation where DESG_ID=t.designation) as Designation,
-                (select DEPT_DESC from department where DEPT_ID=t.department) as department 
-                from salary_attendence t, personnel_basic_info a where t.pay>0  and  t.mon=' . $_POST['mon'] . ' and t.year=' . $_POST['year'] . ' and t.PBI_ID=a.PBI_ID ' . $salaryConn . $PBI_GRP . $id_con . ' order by (a.PBI_CODE) asc';
+                $sqld = 'select t.*, a.PBI_ID,a.PBI_CODE, a.PBI_NAME, a.PBI_DOJ, (select DESG_DESC from designation where DESG_ID=t.designation) as Designation,(select DEPT_DESC from department where DEPT_ID=t.department) as department from salary_attendence t, personnel_basic_info a where t.pay>0  and  t.mon=' . $_POST['mon'] . ' and t.year=' . $_POST['year'] . ' and t.PBI_ID=a.PBI_ID ' . $salaryConn . $PBI_GRP . $id_con . ' order by (a.PBI_CODE) asc';
 
                 $queryd = mysql_query($sqld);
                 while ($data = mysql_fetch_object($queryd)) {
@@ -12261,7 +12259,7 @@ $signature_a = '';
                     <td><?= $data->PBI_CODE ?></td>
                     <td nowrap="nowrap"><?= $data->PBI_NAME ?></td>
                     <td nowrap="nowrap"><?= $data->Designation ?></td>
-                    <td nowrap="nowrap"><?= $data->bank_or_cash ?></td>
+                    <td nowrap="nowrap"><?= $data->branch ?></td>
                     <td nowrap="nowrap"><?= $data->department ?></td>
 
                     <!--<td><? //=date('d-M-Y',strtotime($data->PBI_DOJ))
