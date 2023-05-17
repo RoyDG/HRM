@@ -1,38 +1,90 @@
 <?php
+
+
+
 require_once "../../../assets/template/layout.top.php";
+
+
+
 $head = '<link href="../../css/report_selection.css" type="text/css" rel="stylesheet"/>';
+
+
+
 $title = 'Advance Reporting';
 
+
+
 do_calander('#ijdb');
+
+
+
 do_calander('#ijda');
+
+
+
 do_calander('#ppjdb');
+
+
+
 do_calander('#ppjda');
 
+
+
 if ($_POST['mon'] != '') {
+
+
 
   $mon = $_POST['mon'];
 } else {
 
+
+
   $mon = date('n');
 }
 
+
+
+
+
+
+
 if ($_POST['year'] != '') {
+
+
 
   $year = $_POST['year'];
 } else {
+
+
 
   $year = date('Y');
 }
 
 
+
 ?><style type="text/css">
   <!--
   .style1 {
+
+
+
     font-size: 16px;
+
+
+
     color: #C00;
+
+
+
   }
   -->
+
+
+
 </style>
+
+
+
 
 
 <form action="../report/master_report.php" target="_blank" method="post">
@@ -81,7 +133,7 @@ if ($_POST['year'] != '') {
             <div class="form-group row m-0 pb-1">
               <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Employee</label>
               <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
-                <input list="pbi" type="text" name="PBI_ID" autocomplete="off" class="form-control">
+                <input list="pbi" type="text" name="PBI_ID"  autocomplete="off" class="form-control">
                 <datalist id="pbi">
                   <option></option>
                   <? foreign_relation('personnel_basic_info', 'PBI_ID', 'concat(PBI_CODE,"-",PBI_NAME)', $PBI_ID, '1'); ?>
@@ -112,45 +164,62 @@ if ($_POST['year'] != '') {
               <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Designation</label>
               <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
                 <select name="PBI_DESIGNATION" class="form-control">
+
                   <option></option>
+
                   <? foreign_relation('designation', 'DESG_ID', 'DESG_DESC', $_POST['PBI_DESIGNATION']); ?>
+
                 </select>
               </div>
             </div>
-
-
             <div class="form-group row m-0 pb-1">
               <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Job Status</label>
               <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
                 <select name="job_status" class="form-control">
+
                   <option></option>
+
                   <option>IN SERVICE</option>
+
                   <option>NOT IN SERVICE</option>
+
                 </select>
               </div>
             </div>
+
+
 
 
             <div class="form-group row m-0 pb-1">
               <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text">Bonus Type </label>
               <div class="col-sm-8 col-md-8 col-lg-8 col-xl-8 p-0 pr-2 ">
                 <select name="bonus_type" class="form-control">
+
                   <option></option>
+
                   <option value="1">Eid-Ul-Fitre</option>
+
                   <option value="2">Eid-Ul-Adha</option>
+
                 </select>
               </div>
             </div>
+
+
+
+
+
           </div>
         </div>
+
+
       </div>
+
     </div>
     <br />
-
-
-
     <div class="container-fluid bg-form-titel">
       <div class="row">
+
         <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
           <div class="form-group row m-0">
             <label class="col-sm-4 col-md-4 col-lg-4 col-xl-4 m-0 p-0 d-flex justify-content-end align-items-center pr-1 bg-form-titel-text"> For Payroll (Month)</label>
@@ -190,18 +259,40 @@ if ($_POST['year'] != '') {
                 <option <?= ($year == '2020') ? 'selected' : '' ?>>2020</option>
                 <option <?= ($year == '2021') ? 'selected' : '' ?>>2021</option>
                 <option <?= ($year == '2022') ? 'selected' : '' ?>>2022</option>
+
+
+
                 <option <?= ($year == '2023') ? 'selected' : '' ?>>2023</option>
+
+
+
                 <option <?= ($year == '2024') ? 'selected' : '' ?>>2024</option>
+
+
+
                 <option <?= ($year == '2025') ? 'selected' : '' ?>>2025</option>
                 <option <?= ($year == '2026') ? 'selected' : '' ?>>2026</option>
+
+
+
                 <option <?= ($year == '2027') ? 'selected' : '' ?>>2027</option>
+
+
                 <option <?= ($year == '2028') ? 'selected' : '' ?>>2028</option>
+
+
+
                 <option <?= ($year == '2029') ? 'selected' : '' ?>>2029</option>
+
+
+
                 <option <?= ($year == '2030') ? 'selected' : '' ?>>2030</option>
               </select>
+
             </div>
           </div>
         </div>
+
       </div>
     </div>
     <br />
@@ -210,11 +301,8 @@ if ($_POST['year'] != '') {
       Select report
     </h4>
 
-
-
-
     <div class="container-fluid p-0 ">
-      <!-- table start hear-->
+      <!--            table start hear-->
       <table class="table1  table-striped table-bordered table-hover table-sm">
         <thead class="thead1">
           <tr class="bgc-info">
@@ -224,14 +312,15 @@ if ($_POST['year'] != '') {
             <th class="text-left"></th>
           </tr>
         </thead>
-
         <tbody class="tbody1">
+
+
           <tr>
 
-            <td><input type="radio" id="report" name="report" value="81" /></td>
+            <td><input type="radio"  id="report" name="report" value="81" /></td>
             <td class="bold" align="left"> <label for="4"> Attendance Summary Portal </label> </td>
 
-            <td><input type="radio" id="report" name="report" value="61" /></td>
+            <td><input type="radio"  id="report" name="report" value="61" /></td>
             <td class="bold" align="left"> <label for="7">Leave Report</label> </td>
 
           </tr>
@@ -241,56 +330,58 @@ if ($_POST['year'] != '') {
             <td><input type="radio" id="report" name="report" value="789" /></td>
             <td class="bold" align="left"> <label for="3">Salary Payroll Report Bhaiya</label> </td>
 
-            <td><input type="radio" id="report" name="report" value="60" /></td>
+            <td><input type="radio"  id="report" name="report" value="60" /></td>
             <td class="bold" align="left"> <label for="6">IOM Report</label> </td>
           </tr>
 
           <tr>
 
-            <td><input type="radio" id="report" name="report" value="79" /></td>
+            <td><input type="radio"  id="report" name="report" value="79" /></td>
             <td class="bold" align="left"> <label for="8">Salary Payslip</label> </td>
-            <td><input type="radio" id="report" name="report" value="1" checked="checked" /></td>
+            <td><input type="radio"  id="report" name="report" value="1" checked="checked" /></td>
             <td class="bold" align="left"> <label for="1"> Basic Information</label> </td>
 
           </tr>
 
 
           <tr>
-            <td><input type="radio" id="report" name="report" value="2" /></td>
+            <td><input type="radio"  id="report" name="report" value="2" /></td>
             <td class="bold" align="left"> <label for="5">Employee Salary and Benefits Information</label> </td>
 
-            <td><input type="radio" id="report" name="report" value="78" /></td>
+            <td><input type="radio"  id="report" name="report" value="78" /></td>
             <td class="bold" align="left"> <label for="3">Salary Payroll Report Final</label> </td>
 
 
           </tr>
 
           <tr>
-            <td><input type="radio" id="report" name="report" value="85" /></td>
+            <td><input type="radio"  id="report" name="report" value="85" /></td>
             <td class="bold" align="left"> <label for="5">Salary Summary Sheet (Department)</label> </td>
 
-            <td><input type="radio" id="report" name="report" value="86" /></td>
+            <td><input type="radio"   id="report" name="report" value="86" /></td>
             <td class="bold" align="left"> <label for="5">Salary Summary Sheet (Designation)</label> </td>
           </tr>
+		  
+		  
+		  <tr>
+            <td><input type="radio"  id="report" name="report" value="87" /></td>
+            <td class="bold" align="left"> <label for="5">Bonus Report</label> </td>
 
-
-          <tr>
-            <td>
-              <input type="radio" id="report" name="report" value="87" />
-            </td>
-            <td class="bold" align="left">
-              <label for="5">Bonus Report</label>
-            </td>
-
-            <td>
-              <input type="radio" id="report" name="report" value="88" />
-            </td>
-            <td class="bold" align="left">
-              <label for="5">Tax Report</label>
-            </td>
+            <td></td>
+            <td class="bold" align="left">  </td>
           </tr>
+
+
+
+
+
+
+
+
+
         </tbody>
       </table>
+
 
       <div class="n-form-btn-class">
         <!--            button code hear-->
@@ -299,6 +390,7 @@ if ($_POST['year'] != '') {
 
     </div>
   </div>
+
 </form>
 
 
