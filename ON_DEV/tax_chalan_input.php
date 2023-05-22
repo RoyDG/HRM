@@ -22,7 +22,7 @@ require "../../config/inc.all.php";
 
 
 
-$title='Tax Chalan Input';			// Page Name and Page Title
+$title='Tax Challan Input';			// Page Name and Page Title
 
 
 
@@ -576,7 +576,8 @@ $(document).ready(function(){
 
                     <h1>
 
-                      <label for="oe-field-input-27" title="" class=" oe_form_label oe_align_right"> <a href="home2.php" rel = "gb_page_center[940, 600]">
+                      <label for="oe-field-input-27" title="" class=" oe_form_label oe_align_right"> 
+                        <a href="home2.php" rel = "gb_page_center[940, 600]">
 
                       <?=$title?>
 
