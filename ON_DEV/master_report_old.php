@@ -10766,11 +10766,11 @@ order by b.bonus_amt desc";
                 /*if($_POST['year'] !='')
                 $tr_con .= ' and s.year="'.$_POST['year'].'"';*/
 
-                $basic_sql = 'select p.PBI_DOJ, p.PBI_ID,p.PBI_CODE, p.PBI_NAME,
+                $basic_sql = 'select p.ESSENTIAL_TIN_NO,p.PBI_DOJ, p.PBI_ID,p.PBI_CODE, p.PBI_NAME,
 
-                              (select DEPT_DESC from department where DEPT_ID=p.DEPT_ID) as department,
-                              (select DESG_DESC from designation where DESG_ID=p.DESG_ID) as designation
-                             
+                (select DEPT_DESC from department where DEPT_ID=p.PBI_DEPARTMENT) as department,
+                              (select DESG_DESC from designation where DESG_ID=p.PBI_DESIGNATION) as designation,
+                              (select PROJECT_DESC from project where PROJECT_ID=p.JOB_LOCATION) as project
                               from personnel_basic_info p, salary_info i
                               where p.PBI_ID=i.PBI_ID  ' . $tr_con . ' order by i.income_tax desc ';
 
@@ -10784,27 +10784,43 @@ order by b.bonus_amt desc";
 
                   $entry_by = $data->entry_by;
                   $year = date('Y');
-                  $tax = find_a_field('salary_attendence', 'sum(income_tax)', 'PBI_ID="' . $tf->PBI_ID . '" and pay>0 and  year="'. $_POST['year'].'" and mon="'. $_POST['mon'].'"');
-                
+                  $tax = find_a_field('salary_attendence', 'income_tax', 'PBI_ID="' . $tf->PBI_ID . '" and pay>0 and  year="' . $_POST['year'] . '"');
+                  $total_tax = find_a_field('salary_attendence', 'sum(income_tax)', 'PBI_ID="' . $tf->PBI_ID . '" and pay>0 and year in ("' . $_POST['year'] . '","' . $next_year . '")');
                 ?>
 
                   <?
-                  if ($tax > 0) { ?>
+                  if ($total_tax > 0) {
+
+                    //Calculate total Tax
+
+                    $april  = find_a_field('salary_attendence', 'income_tax', 'PBI_ID="' . $tf->PBI_ID . '"');
+
+
+                    $grand_total_amount = $july + $august + $sept + $oct + $nov + $dec + $jan + $feb + $march + $april + $may + $june;
+                    if ($grand_total_amount > 0) {
+                  ?>
 
                       <tr>
                         <td><?= $sl++; ?></td>
                         <td><?= $tf->PBI_CODE ?></td>
                         <td><?= $tf->PBI_NAME ?></td>
                         <td><?= $tf->designation ?></td>
-                        <td><?= $tf->department ?></td>
+                        <? if ($tf->department == 'NO DEPARTMENT') { ?>
+                          <td></td>
+                        <? } else { ?>
+                          <td><?= $tf->department ?></td>
+                        <? } ?>
+
+                      
                         <td align="right">
-                          <?= ($tax > 0) ? number_format($tax): ''; $totIincomeTax += $tax;?>
+                          <?= ($tf->income_tax > 0) ? $tf->income_tax : '';
+                                $totIincomeTax += $tf->income_tax ?>
                         </td>
  
                       </tr>
                 <?
-                    
-                    
+                      $grandTotal = $grandTotal + $grand_total;
+                    }
                   }
                 }
                 ?>
@@ -10818,36 +10834,18 @@ order by b.bonus_amt desc";
                 </tr>
               </tbody>
             </table>
+            <br>
+            <br>
+            <br>
 
-            In Words:
-            <?
-            echo convertNumberMhafuz($totIincomeTax);?>
 
-            <br>
-            <br>
-            <br>
+
+
+
+
+
           <?
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         if ($_POST['report'] == 785) {
           ?>
             <table width="100%" cellspacing="0" cellpadding="2" border="0" id="ExportTable">
@@ -10868,34 +10866,231 @@ order by b.bonus_amt desc";
                 </tr>
               </thead>
               <tbody>
+                <?
 
 
-        <?
-            $bank = $_POST['cash_bank'];
-            $sqld = 'select 
-            t.*,t.pbi_held_up held_up_status,
-            a.PBI_ID,a.PBI_NAME,a.PBI_GROUP,d.DESG_SHORT_NAME PBI_DESIGNATION ,a.PBI_DEPARTMENT,s.cash_bank,s.cash
-            from  salary_bonus t, personnel_basic_info a, designation d, salary_info s 
-            where 
-            t.PBI_ID=a.PBI_ID 
-            and t.PBI_ID=s.PBI_ID 
-            and d.DESG_SHORT_NAME=a.pbi_designation 
-            and d.DESG_SHORT_NAME=t.pbi_designation 
-            and t.pbi_held_up=0 
-            and s.cash_bank="' . $bank . '" 
-            and t.bonus_type=' . $_POST['bonus_type'] . ' 
-            and t.year=' . $_POST['year'] . ' 
-            and t.bank_paid>0
-            ' . $con . ' 
-            group by a.PBI_ID
-            order by a.PBI_ID';
+
+
+
+
+
+                $bank = $_POST['cash_bank'];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                $sqld = 'select 
+
+
+
+
+
+
+
+t.*,t.pbi_held_up held_up_status,
+
+
+
+
+
+
+
+a.PBI_ID,a.PBI_NAME,a.PBI_GROUP,d.DESG_SHORT_NAME PBI_DESIGNATION ,a.PBI_DEPARTMENT,s.cash_bank,s.cash
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+from  salary_bonus t, personnel_basic_info a, designation d, salary_info s 
+
+
+
+
+
+
+
+where 
+
+
+
+
+
+
+
+t.PBI_ID=a.PBI_ID 
+
+
+
+
+
+
+
+and t.PBI_ID=s.PBI_ID 
+
+
+
+
+
+
+
+and d.DESG_SHORT_NAME=a.pbi_designation 
+
+
+
+
+
+
+
+and d.DESG_SHORT_NAME=t.pbi_designation 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+and t.pbi_held_up=0 
+
+
+
+
+
+
+
+and s.cash_bank="' . $bank . '" 
+
+
+
+
+
+
+
+and t.bonus_type=' . $_POST['bonus_type'] . ' 
+
+
+
+
+
+
+
+and t.year=' . $_POST['year'] . ' 
+
+
+
+
+
+
+
+and t.bank_paid>0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+' . $con . ' 
+
+
+
+
+
+
+
+group by a.PBI_ID
+
+
+
+
+
+
+
+order by a.PBI_ID';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 $queryd = mysql_query($sqld);
+
+
+
+
+
+
+
                 while ($data = mysql_fetch_object($queryd)) {
+
+
+
+
+
+
+
                   $entry_by = $data->entry_by;
-        ?>
 
 
+
+
+
+
+
+                ?>
                   <tr>
                     <td><?= ++$s ?></td>
                     <td><?= $data->PBI_ID ?></td>
@@ -10905,8 +11100,20 @@ order by b.bonus_amt desc";
                     <td><?= $data->cash ?></td>
                     <td><? if ($data->held_up_status == '0') {
 
+
+
+
+
+
+
                           if ($data->cash_bank == $bank) {
                             echo number_format($data->bank_paid);
+
+
+
+
+
+
 
                             $total_bank_payment_dbbl = $total_bank_payment_dbbl + $data->bank_paid;
                           }
