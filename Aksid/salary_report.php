@@ -1247,9 +1247,9 @@ if(isset($_POST['lock'])){
 							  <tr>
 
 
-
-							    <td align="center" class="alt"><input name="report" type="radio" class="radio" value="45963214" /></td>
-                                <td class="alt"><strong>Pay Slip</strong></td>
+								<td align="center" class="alt"><input name="report" type="radio" class="radio" value="21231212" /></td>   
+                              <td class="alt"><strong>Individual Fiscal Salary Statement (Tax purpose)</strong></td>
+							   
 
 
                                 <td align="left" class="alt"><input name="report" type="radio" class="radio" value="783" /></td>
@@ -1261,14 +1261,12 @@ if(isset($_POST['lock'])){
 							  
 							  
 							  <tr >
+								<td align="center" class="alt"><input name="report" type="radio" class="radio" value="45963214" />
+								</td>
+                                <td class="alt"><strong>Pay Slip</strong></td>
 
 
-
-							    <td align="center" class="alt"><input name="report" type="radio" class="radio" value="5312021" /></td>
-
-
-
-							    <td class="alt"><strong>Salary Certificate</strong></td>
+							    
 
 
 
@@ -1276,7 +1274,7 @@ if(isset($_POST['lock'])){
 
 
 
-                                <td class="alt"><strong>Salary Summery Sheet (All</strong>)</td>
+                                <td class="alt"><strong>Salary Summary Sheet (All</strong>)</td>
 
 
 
@@ -1285,14 +1283,14 @@ if(isset($_POST['lock'])){
 							  
 							  
 							  <tr>
+							<td align="center" class="alt"><input name="report" type="radio" class="radio" value="5312021" /></td>
 
 
 
-							    <td align="center" class="alt"><input name="report" type="radio" class="radio" value="5312029" /></td>
+							    <td class="alt"><strong>Salary Certificate</strong></td>	
 
 
-
-							    <td class="alt"><strong>Salary Certificate Tax</strong></td>
+							    
 
 
 
@@ -1301,7 +1299,7 @@ if(isset($_POST['lock'])){
 
 
 
-                                <td class="alt"><strong>Salary Summery Sheet (Cash Portion)</strong></td>
+                                <td class="alt"><strong>Salary Summary Sheet (Cash Portion)</strong></td>
 
 
 
@@ -1309,14 +1307,17 @@ if(isset($_POST['lock'])){
 							  
 							  
 							  <tr>
+							<td align="center" class="alt"><input name="report" type="radio" class="radio" value="5312029" /></td>
 
 
 
-                            <td align="center" class="alt"><input name="report" type="radio" class="radio" value="4763" /></td>   
-                            <td class="alt"><strong>Advance Salary Report</strong></td>
+							    <td class="alt"><strong>Salary Certificate Tax</strong></td>
+ 								
+
+                            
 
                             <td align="left" class="alt"><input name="report" type="radio" class="radio" value="8889" /></td>
-                            <td class="alt"><strong>Salary Summery Sheet (Bkash)</strong></td>
+                            <td class="alt"><strong>Salary Summary Sheet (Bkash)</strong></td>
 
 
 
@@ -1326,11 +1327,14 @@ if(isset($_POST['lock'])){
 							  
 							  
 						 <tr>
-				<td align="center" class="alt"><input name="report" type="radio" class="radio" value="551010" /></td>   
-				<td class="alt"><strong>Yearly Department Wise Salary Statement</strong></td>
+							
+						<td align="center" class="alt"><input name="report" type="radio" class="radio" value="4763" /></td>   
+                            <td class="alt"><strong>Advance Salary Report</strong></td>	 
+							 
+				
 				
 				 <td align="left" class="alt"><input name="report" type="radio" class="radio" value="8890" /></td>
-                 <td class="alt"><strong>Salary Summery Sheet (Nagad)</strong></td>
+                 <td class="alt"><strong>Salary Summary Sheet (Nagad)</strong></td>
 
 
 
@@ -1340,8 +1344,12 @@ if(isset($_POST['lock'])){
 						   
 						   
 						   	  <tr>
-                                <td align="center" class="alt"><input name="report" type="radio" class="radio" value="144441" /></td>
-                                <td class="alt"><strong>Salary Comparison Report</strong><strong></strong></td>
+								  
+							<td align="center" class="alt"><input name="report" type="radio" class="radio" value="551010" /></td>   
+				<td class="alt"><strong>Yearly Department Wise Salary Statement</strong></td>	  
+								  
+								 
+                                
                                 
 							    <td align="left" class="alt"><input name="report" type="radio" class="radio" value="4512" /></td>
                                 <td class="alt"><strong>Salary Advice (Bank)</strong></td>
@@ -1351,14 +1359,16 @@ if(isset($_POST['lock'])){
 							  
 							  
 							  <tr>
+								<td align="center" class="alt"><input name="report" type="radio" class="radio" value="144441" /></td>
+                                <td class="alt"><strong>Salary Comparison Report</strong><strong></strong></td>
 
 
-
-                            <td align="center" class="alt"><input name="report" type="radio" class="radio" value="283544" /></td>   
-
-
-
-                                <td class="alt"><strong>Salary Report (Tax purpose)</strong></td>
+                            
+								  
+								  
+								
+								  
+								  
 
                                 <td align="center" class="alt"><input name="report" type="radio" class="radio" value="4513" /></td>
 
@@ -1381,10 +1391,16 @@ if(isset($_POST['lock'])){
 
                                 <td class="alt"><strong>Salary Cross Check(Accounts)</strong></td>-->
 								
+							 <td align="center" class="alt"><input name="report" type="radio" class="radio" value="283544" /></td>   
+
+
+
+                                <td class="alt"><strong>Salary Report (Tax purpose)</strong></td>
+								   
+								   
+								   
 								
-								
-                              <td align="center" class="alt"><input name="report" type="radio" class="radio" value="21231212" /></td>   
-                              <td class="alt"><strong>Individual Fiscal Salary Statement New</strong></td>
+                              
 
 
 

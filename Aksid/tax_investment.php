@@ -15,24 +15,41 @@ $pbi_new_code=find_a_field('personnel_basic_info','PBI_ID','PBI_CODE='.$_POST['e
 $_SESSION['employee_selected'] = $pbi_new_code;
 
 }
+
+
 // ::::: Edit This Section ::::: 
 
-$title='Education Management';			// Page Name and Page Title
+$title='Tax Investment';			// Page Name and Page Title
 
-$page="tax_chalan.php";		// PHP File Name
+$page="tax_investment.php";		// PHP File Name
 
-$input_page="tax_chalan_input.php";
+$input_page="tax_investment_input.php";
 
 $root='hrm';
 
-$table='emp_taxchalan_no';		// Database Table Name Mainly related to this page
+
+
+$table='tax_investment';		// Database Table Name Mainly related to this page
 
 $unique='id';			// Primary Key of this Database table
 
 $shown='tax_chalan_no';				// For a New or Edit Data a must have data field
+
+
+
 // ::::: End Edit Section :::::
+
+
+
+
+
 $crud      =new crud($table);
+
+
+
 $$unique = $_GET[$unique];
+
+
 
 ?>
 
@@ -120,21 +137,18 @@ $$unique = $_GET[$unique];
 
 
 
-          <div  class="oe_view_manager_view_list"><div  class="oe_list oe_view">
+        <div  class="oe_view_manager_view_list">
+          <div  class="oe_list oe_view">
 
-          <? $res='select a.'.$unique.',
-		  
-		  a.tax_chalan_no as Tax_Challan_No,
-		  DATE_FORMAT(a.chalan_start_date , "%d-%b-%Y") as Tax_Challan_Date,
-		  CONCAT(a.s_year, "-" , a.e_year) AS TAX_Year,
-		  CONCAT(a.assesment_s_year, "-" , a.assesment_e_year) AS Assesment_Year,
-		  a.chalan_amt as Challan_Amount
-		  
-		  from '.$table.' a
-		  
-		  where a.assesment_s_year="'.date("Y").'" and a.PBI_ID='.$_SESSION['employee_selected'].' order by a.chalan_start_date' ;
+          <?  $res='select a.'.$unique. ',a.life_insurance as Life_Insurance,a.dps_amt as DPS_AMOUNT,
+                    a.saving_certificate as Saving_Certificate,a.debenture as Debenture,
 
-		  echo $crud->link_report($res,$link);?>
+                    DATE_FORMAT(a.investment_start_date , "%d-%b-%Y") as investment_date
+		                                   
+                    from '.$table.' a
+		                where a.PBI_ID='.$_SESSION['employee_selected'];
+
+		                echo $crud->link_report($res,$link);?>
 
           </div></div>
 
@@ -158,18 +172,8 @@ $$unique = $_GET[$unique];
 
 </form>
 
-
-
-
-
-
 </div>
-
-
-
- 
-		   </div>
-		   
+		  </div>
 		   
 		   </div>
 		    </div>

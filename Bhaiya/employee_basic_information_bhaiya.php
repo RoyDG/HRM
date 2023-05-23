@@ -4635,7 +4635,7 @@ value="<?=$PBI_SERVICE_LENGTH?>" readonly="readonly">
 
 
 
-                              <option value="1">General</option>
+                              <option <?=($LEAVE_RULE_ID==1)? 'selected' : '' ?> value="1">General</option>
 
 
 
