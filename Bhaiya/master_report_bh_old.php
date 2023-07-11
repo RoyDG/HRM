@@ -580,11 +580,6 @@ if (isset($_POST['submit']) && isset($_POST['report']) && $_POST['report'] > 0) 
     case 1:
 
 
-
-      echo 1;
-
-
-
       $report = "Employee Basic Information";
 
 
@@ -599,7 +594,7 @@ if (isset($_POST['submit']) && isset($_POST['report']) && $_POST['report'] > 0) 
       }
 
 
-      echo $sql = "select 
+      $sql = "select 
 
 
 a.PBI_CODE as Employee_Id,a.PBI_NAME as Name,
@@ -6347,21 +6342,9 @@ AND a.pay_code = e.pay_code" . $proj_con . $date_con . $flat_con . $party_con . 
 
     @media print {
 
-
-
-
-
-
-
       thead {
         display: table-header-group;
       }
-
-
-
-
-
-
 
     }
 
@@ -10510,6 +10493,235 @@ GROUP BY u.DESG_ID';
             <!-- END  -->
 
 
+
+
+
+
+
+
+
+            <!-- **************************** Salary Summary Sheet (Designation) Start From Here    ******************************************* -->
+
+
+          <?
+        }
+
+        if ($_POST['report'] == 87) {
+
+
+          ?>
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+              <thead>
+                <tr>
+
+                  <td style="border:0px; padding-right:100px" colspan="29" align="center"><?= $str ?></td>
+                </tr>
+                <tr>
+                  <th width="2%" rowspan="3" align="center">S/L</th>
+                  <th width="5%" rowspan="3">
+                    <div align="center">ID</div>
+                  </th>
+                  <th width="4%" rowspan="3">
+                    <div align="center">Name</div>
+                  </th>
+                  <th width="8%" rowspan="3">
+                    <div align="center">Designation</div>
+                  </th>
+                  <th width="7%" rowspan="3" nowrap="nowrap">
+                    <div align="center">Joining Date</div>
+                  </th>
+                  <th width="8%" rowspan="3">
+                    <div align="center">Job Period</div>
+                  </th>
+                  <th colspan="2" align="center">
+                    <div align="center">Salary</div>
+                  </th>
+                  <th width="10%" rowspan="3">
+                    <div align="center">Bonus (Basic) %</div>
+                  </th>
+                  <th width="11%" rowspan="3">
+                    <div align="center">Bonus Amount</div>
+                  </th>
+                  <th width="7%" rowspan="3">
+                    <div align="center">Bank Acc.</div>
+                  </th>
+                  <th width="12%" rowspan="3">
+                    <div align="center">Payroll Card No</div>
+                  </th>
+                  <th width="7%" rowspan="3">
+                    <div align="center">Remarks</div>
+                  </th>
+                </tr>
+                <tr>
+                  <th width="4%">
+                    <div align="center">Gross</div>
+                  </th>
+                  <th width="4%">
+                    <div align="center">Basic</div>
+                  </th>
+                </tr>
+                <tr>
+                  <th>
+                    <div align="center">100%</div>
+                  </th>
+                  <th>
+                    <div align="center">50%</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <?
+
+                if ($_POST['branch'] != '')
+
+
+
+                  $cons = ' and a.PBI_BRANCH ="' . $_POST['branch'] . '"';
+
+
+
+                if ($_POST['JOB_LOCATION'] != '')
+
+
+
+                  $cons .= ' and b.pbi_job_location ="' . $_POST['JOB_LOCATION'] . '"';
+
+
+
+
+                if ($_POST['department'] != '')
+
+
+
+                  $cons .= ' and b.pbi_department ="' . $_POST['department'] . '"';
+                $found = find_a_field('salary_bonus', 'lock_status', 'bonus_type="' . $_POST['bonus_type'] . '" and year="' . $_POST['year'] . '"');
+
+                if ($found == 0) {
+                  $sqld = "select a.PBI_ID,a.PBI_CODE, a.PBI_NAME, d.DESG_SHORT_NAME as designation, date_format(a.PBI_DOJ,'%d-%b-%y') as joining_date,
+b.job_period,
+b.gross_salary,
+b.basic_salary,
+b.bonus_percent,
+b.bonus_amt,
+b.remarks,
+s.cash as bank_ac,
+s.card_no
+from
+personnel_basic_info a, salary_bonus b, salary_info s, designation d
+where
+1 and b.pbi_designation=d.DESG_ID and b.PBI_ID=a.PBI_ID and
+s.PBI_ID=b.PBI_ID and b.bonus_type=" . $_POST['bonus_type'] . " and
+b.bonus_amt>0 and
+b.year=" . $_POST['year'] . " " . $cons . "
+order by b.bonus_amt desc";
+                } else {
+                  $sqld = "select a.PBI_ID,a.PBI_CODE,a.PBI_NAME, d.DESG_SHORT_NAME as designation, date_format(a.PBI_DOJ,'%d-%b-%y') as joining_date,
+b.job_period,b.gross_salary,b.basic_salary,b.bonus_percent,b.bonus_amt,b.remarks,
+s.cash as bank_ac,
+s.card_no
+from
+personnel_basic_info a, salary_bonus_lock b, salary_info s, designation d
+where
+1 and b.pbi_designation=d.DESG_ID and a.PBI_ID=b.PBI_ID and
+s.PBI_ID=b.PBI_ID and b.bonus_type=" . $_POST['bonus_type'] . " and
+b.bonus_percent not like 0 and
+b.year=" . $_POST['year'] . " " . $cons . "
+order by b.bonus_amt desc";
+                }
+
+
+                $queryd = mysql_query($sqld);
+                while ($data = mysql_fetch_object($queryd)) {
+                  $entry_by = $data->entry_by;
+
+                ?>
+                  <tr>
+                    <td align="center"><?= ++$s ?></td>
+                    <td align="center"><?= $data->PBI_CODE ?></td>
+                    <td nowrap="nowrap"><?= $data->PBI_NAME ?></td>
+                    <td nowrap="nowrap"><?= $data->designation ?></td>
+                    <td align="center"><?= $data->joining_date ?></td>
+                    <td nowrap="nowrap" align="center"><?= $data->job_period ?></td>
+                    <td align="right"><?= (number_format($data->gross_salary, 0) > 0) ? number_format($data->gross_salary, 0) : '';
+                                      $tot_gross += $data->gross_salary; ?></td>
+                    <td align="right"><?= (number_format($data->basic_salary, 0) > 0) ? number_format($data->basic_salary, 0) : '';
+                                      $tot_basic += $data->basic_salary; ?></td>
+                    <td align="center"><?= $data->bonus_percent ?></td>
+                    <td align="right"><?= number_format($data->bonus_amt, 0);
+                                      $totalBonus += $data->bonus_amt; ?></td>
+                    <td align="center"><?= $data->bank_ac; ?></td>
+                    <td align="center"><?= $data->card_no; ?></td>
+                    <td><?= $data->remarks; ?></td>
+                  </tr>
+                <?
+
+
+
+
+                }
+
+
+
+                ?>
+                <tr>
+                  <td colspan="6" align="right">Total:</td>
+                  <td align="right"><strong>
+                      <?= number_format($tot_gross, 0) ?>
+                    </strong></td>
+                  <td align="right"><strong>
+                      <?= number_format($tot_basic, 0) ?>
+                    </strong></td>
+                  <td>&nbsp;</td>
+                  <td align="right"><strong>
+                      <?= number_format($totalBonus, 0) ?>
+                    </strong></td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                  <td>&nbsp;</td>
+                </tr>
+              </tbody>
+            </table>
+            In Words:
+            <?
+            echo convertNumberMhafuz($totalBonus);
+
+            ?>
+            <br>
+            <br>
+            <br>
+            <div style="width:100%; margin:60px auto">
+              <div style="float:left; width:25%; text-align:center">-------------------<br>
+                Prepared By</div>
+              <div style="float:left; width:25%; text-align:center">-------------------<br>
+                Audit</div>
+              <div style="float:left; width:25%; text-align:center">-------------------<br>
+                Managing Director</div>
+              <div style="float:left; width:25%; text-align:center">-------------------<br>
+                Chairman</div>
+            </div>
+            <br>
+            <br>
+            <br>
+
+
+
+
+
+            <!-- END bonus report Bkash -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           <?
 
 
@@ -12115,7 +12327,6 @@ $signature_a = '';
             <!-- Bhaiya Housing salary report start -->
 
           <?
-
         }
         if ($_POST['report'] == 789) {
 
@@ -12143,7 +12354,7 @@ $signature_a = '';
                     <div align="center">Designation</div>
                   </th>
                   <th rowspan="2">
-                    <div align="center">Branch</div>
+                    <div align="center">Payment Type</div>
                   </th>
                   <th rowspan="2">
                     <div align="center">Department</div>
@@ -12245,7 +12456,10 @@ $signature_a = '';
                 $m_s_date = $_POST['year'] . '-' . $_POST['mon'] . '-' . '01';
                 $m_e_date = $_POST['year'] . '-' . $_POST['mon'] . '-' . '31';
 
-                $sqld = 'select t.*, a.PBI_ID,a.PBI_CODE, a.PBI_NAME, a.PBI_DOJ, (select DESG_DESC from designation where DESG_ID=t.designation) as Designation,(select DEPT_DESC from department where DEPT_ID=t.department) as department from salary_attendence t, personnel_basic_info a where t.pay>0  and  t.mon=' . $_POST['mon'] . ' and t.year=' . $_POST['year'] . ' and t.PBI_ID=a.PBI_ID ' . $salaryConn . $PBI_GRP . $id_con . ' order by (a.PBI_CODE) asc';
+                $sqld = 'select t.*, a.PBI_ID,a.PBI_CODE, a.PBI_NAME, a.PBI_DOJ, 
+                (select DESG_DESC from designation where DESG_ID=t.designation) as Designation,
+                (select DEPT_DESC from department where DEPT_ID=t.department) as department 
+                from salary_attendence t, personnel_basic_info a where t.pay>0  and  t.mon=' . $_POST['mon'] . ' and t.year=' . $_POST['year'] . ' and t.PBI_ID=a.PBI_ID ' . $salaryConn . $PBI_GRP . $id_con . ' order by (a.PBI_CODE) asc';
 
                 $queryd = mysql_query($sqld);
                 while ($data = mysql_fetch_object($queryd)) {
@@ -12259,7 +12473,7 @@ $signature_a = '';
                     <td><?= $data->PBI_CODE ?></td>
                     <td nowrap="nowrap"><?= $data->PBI_NAME ?></td>
                     <td nowrap="nowrap"><?= $data->Designation ?></td>
-                    <td nowrap="nowrap"><?= $data->branch ?></td>
+                    <td nowrap="nowrap"><?= $data->bank_or_cash ?></td>
                     <td nowrap="nowrap"><?= $data->department ?></td>
 
                     <!--<td><? //=date('d-M-Y',strtotime($data->PBI_DOJ))

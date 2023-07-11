@@ -280,13 +280,14 @@ if(isset($_POST['lock'])){
                                 <tbody>
                                 
                                   <tr >
-                                    <td align="center" class="alt"><input name="report" type="radio" class="radio" value="777" /></td>
-                                    <td class="alt"><strong>Festival Bonus Report</strong>
-									</td>
-                                   
+									<td align="center" class="alt"><input name="report" type="radio" class="radio" value="21212" /></td>
+                                    <td class="alt"><strong>Bonus Summary Sheet</strong></td>  
+									
+                                    
+                                    <td align="center" class="alt"><input name="report" type="radio" class="radio" value="552" /></td>
+                                    <td class="alt"><strong>Bonus Summary Sheet (Cash)</strong></td>
 									  
-                                    <td align="center" class="alt"><input name="report" type="radio" class="radio" value="780" /></td>
-                                    <td class="alt"><strong>Festival Bonus (Cash Portion)</strong></td>
+                                    
                                     
                                     <!--<tr >
                                 <td align="center" class="alt"><input name="report" type="radio" class="radio" value="778" /></td>
@@ -307,8 +308,8 @@ if(isset($_POST['lock'])){
                                     <td align="center" class="alt"><input name="report" type="radio" class="radio" value="779" /></td>
                                     <td class="alt"><strong>Festival Bonus Advice (Bank)</strong></td>
                                     
-                                     <td align="center" class="alt"><input name="report" type="radio" class="radio" value="552" /></td>
-                                    <td class="alt"><strong>Bonus Summary Sheet (Cash)</strong></td>
+                                    <td align="center" class="alt"><input name="report" type="radio" class="radio" value="780" /></td>
+                                    <td class="alt"><strong>Festival Bonus (Cash Portion)</strong></td>
                                     
 									  
                                     <td align="center" class="alt"><input name="report" type="radio" class="radio" value="21216" /></td>
@@ -324,8 +325,9 @@ if(isset($_POST['lock'])){
 									  
 								<tr> 
 									
-									<td align="center" class="alt"><input name="report" type="radio" class="radio" value="21212" /></td>
-                                    <td class="alt"><strong>Bonus Summary Sheet</strong></td>
+									<td align="center" class="alt"><input name="report" type="radio" class="radio" value="777" /></td>
+                                    <td class="alt"><strong>Festival Bonus Report</strong>
+									</td>
                                    
 									
                                      <td align="center" class="alt"></td>

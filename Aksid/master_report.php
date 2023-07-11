@@ -11,104 +11,9 @@ date_default_timezone_set('Asia/Dhaka');
 
 require "../../../engine/tools/inc.exporttable.php";
 
-
-
-
-
 if(isset($_POST['submit'])&&isset($_POST['report'])&&$_POST['report']>0)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 {
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 	if($_POST['name']!='')
@@ -45277,7 +45182,7 @@ $pay_con = ' and p.PBI_ID="'.$PBI_ID.'"';
 }
 
 $pay = 'select s.*,p.PBI_NAME,p.PBI_CODE,p.PBI_EMAIL,p.PBI_ID,p.ESSENTIAL_TIN_NO as PBI_TIN_NO,p.PBI_SEX,p.PBI_MARITAL_STA as marital_status,
-(select DESG_DESC from designation where DESG_ID=p.PBI_DESIGNATION) as designation, p.PBI_DOJ as joining_date,s.cash_bank 
+(select DESG_DESC from designation where DESG_ID=p.PBI_DESIGNATION) as designation, p.PBI_DOJ as joining_date,s.cash_bank
 
 from salary_info s,personnel_basic_info p where s.PBI_ID=p.PBI_ID '.$pay_con.' ';
 
@@ -45303,7 +45208,7 @@ $assesment_end_year = $fiscal_year[1];
 
 
 
-//TAX INVESMENT AMOUNT 
+//TAX INVESMENT AMOUNT
 
 
   $sqldd = 'select t.PBI_ID,
@@ -45382,9 +45287,9 @@ $mon_2 = date('m',strtotime($_POST['t_date']));
 echo $f_date = $_POST['f_date'];
 $t_date = $_POST['t_date'];
 
- $sql_1 = 'select sum(basic_salary) as basic_salary,sum(house_rent) as house_rent,sum(medical_allowance) as medical_allowance, 
+ $sql_1 = 'select sum(basic_salary) as basic_salary,sum(house_rent) as house_rent,sum(medical_allowance) as medical_allowance,
  sum(special_allowance) as conveyance_allowance,
-sum(salary_arrear) as arrear, sum(pf_deduction) as pf, sum(income_tax) as income_tax,bank_or_cash 
+sum(salary_arrear) as arrear, sum(pf_deduction) as pf, sum(income_tax) as income_tax,bank_or_cash
 from salary_attendence where salary_date between "'.$f_date.'" and  "'.$t_date.'" and
 PBI_ID="'.$salary_certificate->PBI_ID.'"';
 
@@ -45580,7 +45485,7 @@ $HisHer = 'her';
       <td>Bonus</td>
       <td colspan="3" align="right"><?=number_format($total_bonus,0)?></td>
     </tr>
- 
+
 
    <? if($net_convaince>0) { ?>
     <tr>
@@ -52911,7 +52816,7 @@ if($_POST['report']==21215)
       <th colspan="2" align="center"><div align="center">Salary</div></th>
       <th width="10%" rowspan="3"><div align="center">Bonus (Basic) %</div></th>
       <th width="11%" rowspan="3"><div align="center">Bonus Amount</div></th>
-    
+
       <th width="12%" rowspan="3"><div align="center">Bkash No</div></th>
       <th width="7%" rowspan="3"><div align="center">Remarks</div></th>
     </tr>
@@ -53033,7 +52938,7 @@ $entry_by=$data->entry_by;
         <?=number_format($totalBonus,0)?>
         </strong></td>
       <td>&nbsp;</td>
-   
+
       <td>&nbsp;</td>
     </tr>
   </tbody>
@@ -76309,7 +76214,7 @@ $iom_in_time = date('h:i:s', strtotime($att_data->iom_start_time));
 
 
 
-if($late_punch<'11:59:00'  && $att_data->leave_id ==0 && $att_data->od_id ==0 && $att_data->iom_sl_no==0 && $att_data->in_time!='0000-00-00 00:00:00' 
+if($late_punch<'11:59:00'  && $att_data->leave_id ==0 && $att_data->od_id ==0 && $att_data->iom_sl_no==0 && $att_data->in_time!='0000-00-00 00:00:00'
 	&& $att_data->in_time!=''){
 
 
@@ -81419,47 +81324,128 @@ $percentage_total = ($total_inc *100)/$total_previous;
     <td colspan="3"></td>
   </tr>
 </table>
+
+
+
+
+
+
 <?
+}
 
 
 
+if($_POST['report']==1446)
 
 
+{
 
+$report="Yearly Increment Report";
 
+?>
 
+<table style="width: auto; margin: 0 auto; font-size: 20px;text-align:center;" border="1" bordercolor="#FFFFFF">
+  <tr>
+    <td style="border:0px solid white; font-family: bangothic;"><strong>AKSID CORPORATION LIMITED.</strong></td>
+  </tr>
+  <tr>
+  <td style="border:0px solid white;"><strong>Increment List of <?= $_POST['year']?></strong></td>
+  </tr>
+</table>
 
 
+   <div align="center" style="font-size:17px"><strong>Slot 1 (January- April)</strong></div>
 
+  <table style="width:auto;margin:0 auto;" cellpadding="0" cellspacing="0" border="1">
+  
 
+   
 
 
+  
+    <tr>
+      <td><strong>SL</strong></td>
+      <td><strong>EMP ID</strong></td>
+     
+      <td><strong>Employee Name</strong></td>
+      <td><strong><div align="center">Designation</div></strong></td>
+      <td><strong><div align="center">Department</div></strong></td>
+      <td><strong>Project/Job Location</strong></td>
+      <td><strong><div align="center">Joining Date</div></strong></td>
+      <td><strong><div align="center">TOTAL SERVICE LENGTH</div></strong></td>
+      <td><strong><div align="center">MOBILE</div></strong></td>
+      <td><strong><div align="center">REPORTING AUTH</div></strong></td>
 
+    </tr>
+  </thead>
+  <?
 
+	
 
 
+	if($_POST['department'] !='')
+	$tr_con = ' and a.PBI_DEPARTMENT="'.$_POST['department'].'"';
 
+	if($_POST['JOB_LOCATION'] !='')
+	$tr_con = ' and a.JOB_LOCATION="'.$_POST['JOB_LOCATION'].'"';
 
 
 
+	     $basic_sql='select a.PBI_ID,a.PBI_CODE,e.ESSENTIAL_JOINING_DATE,
 
+		a.PBI_NAME ,a.PBI_DESIGNATION ,a.PBI_DEPARTMENT,a.JOB_LOCATION,
+		DATEDIFF(NOW(), e.ESSENTIAL_JOINING_DATE) AS days_worked,a.PBI_MOBILE,e.ESSENTIAL_REPORTING
+		
+		from personnel_basic_info a,essential_info e
 
+		where 
+       a.PBI_ID NOT IN (SELECT i.PBI_ID FROM  increment_detail i) and a.PBI_JOB_STATUS="In Service" and
 
+		DATE_ADD(e.ESSENTIAL_JOINING_DATE, INTERVAL 1 YEAR) BETWEEN "'.$_POST['year'].'-01-01" AND "'.$_POST['year'].'-04-30"   
+		and e.PBI_ID=a.PBI_ID '.$tr_con.' group by a.PBI_ID order by e.ESSENTIAL_JOINING_DATE';
 
 
 
 
+		
 
 
+	$basic_query = mysql_query($basic_sql);
+	$s1=1;
+	while($r = mysql_fetch_object($basic_query)){
+    
+    $interval = date_diff(date_create(date('Y-m-d')), date_create($r->ESSENTIAL_JOINING_DATE));
+?>
+  <tr>
+    <td><?=$s1++;?></td>
+    <td><div align="center"><?=$r->PBI_CODE?></div></td>
+    <td><?=$r->PBI_NAME?></td>
+    <td><?=find_a_field('designation','DESG_SHORT_NAME','DESG_ID='.$r->PBI_DESIGNATION);?></td> 
+    <?php
 
+ if($r->PBI_DEPARTMENT == 13){ ?>
+    <td></td>
+    <?php } else{ ?>
+    <td><?=find_a_field('department','DEPT_SHORT_NAME','DEPT_ID='.$r->PBI_DEPARTMENT);?></td>
+    <?php } ?>
 
+    <td><?=find_a_field('project','PROJECT_DESC','PROJECT_ID='.$r->JOB_LOCATION);?></td>
 
+    <td><div align="center"><?=date('d-M-Y',strtotime($r->ESSENTIAL_JOINING_DATE))?></div></td>
+    <td><div align="center"><?=$interval->format("%Y Y, %M M, %d D");?></div></td>
+    <td><?=$r->PBI_MOBILE?></td>
+    <td><div align="center"><?=find_a_field('personnel_basic_info','PBI_NAME','PBI_ID='.$r->ESSENTIAL_REPORTING);?></div></td>
+ 
+  </tr>
+  <? } ?>
 
 
 
 
+</table>
 
 
+<br>
 
 
 
@@ -81468,8 +81454,10 @@ $percentage_total = ($total_inc *100)/$total_previous;
 
 
 
+ 
 
 
+<br>
 
 
 
@@ -81478,38 +81466,112 @@ $percentage_total = ($total_inc *100)/$total_previous;
 
 
 
+<?
+}
 
 
 
+if($_POST['report']==1447)
 
 
-	}
+{
 
+$report="Yearly Increment Report";
 
+?>
 
+<table style="width: auto; margin: 0 auto; font-size: 20px;text-align:center;" border="1" bordercolor="#FFFFFF">
+  <tr>
+    <td style="border:0px solid white; font-family: bangothic;"><strong>AKSID CORPORATION LIMITED.</strong></td>
+  </tr>
+  <tr>
+  <td style="border:0px solid white;"><strong>Increment List of <?= $_POST['year']?></strong></td>
+  </tr>
+</table>
 
 
+ 
 
+   <div align="center" style="font-size:17px"><strong>Slot 2 (May- August)</strong></div>
+ 
+  <table style="width:auto;margin:0 auto;" cellpadding="0" cellspacing="0" border="1">
+  
+  
+    <tr>
+      <td><strong>SL</strong></td>
+      <td><strong>EMP ID</strong></td>
+     
+      <td><strong>Employee Name</strong></td>
+      <td><strong><div align="center">Designation</div></strong></td>
+      <td><strong><div align="center">Department</div></strong></td>
+      <td><strong>Project/Job Location</strong></td>
+      <td><strong><div align="center">Joining Date</div></strong></td>
+      <td><strong><div align="center">TOTAL SERVICE LENGTH</div></strong></td>
+      <td><strong><div align="center">MOBILE</div></strong></td>
+      <td><strong><div align="center">REPORTING AUTH</div></strong></td>
 
+    </tr>
+ 
+  <?
 
+	
 
 
+	if($_POST['department'] !='')
+	$tr_con = ' and a.PBI_DEPARTMENT="'.$_POST['department'].'"';
 
+	if($_POST['JOB_LOCATION'] !='')
+	$tr_con = ' and a.JOB_LOCATION="'.$_POST['JOB_LOCATION'].'"';
 
 
 
+	    $basic_sql='select a.PBI_ID,a.PBI_CODE,e.ESSENTIAL_JOINING_DATE,
 
+		a.PBI_NAME ,a.PBI_DESIGNATION ,a.PBI_DEPARTMENT,a.JOB_LOCATION,
+		DATEDIFF(NOW(), e.ESSENTIAL_JOINING_DATE) AS days_worked,e.ESSENTIAL_REPORTING,a.PBI_MOBILE
+		
+		from personnel_basic_info a,essential_info e
 
+		where 
+		a.PBI_ID NOT IN (SELECT i.PBI_ID FROM  increment_detail i) and a.PBI_JOB_STATUS="In Service" and
+		DATE_ADD(e.ESSENTIAL_JOINING_DATE, INTERVAL 1 YEAR) BETWEEN "'.$_POST['year'].'-05-01" AND "'.$_POST['year'].'-08-30"   
+		and e.PBI_ID=a.PBI_ID '.$tr_con.' group by a.PBI_ID order by e.ESSENTIAL_JOINING_DATE';
 
 
 
 
 
 
+		
 
+	$basic_query = mysql_query($basic_sql);
+	$s1=1;
+	while($r = mysql_fetch_object($basic_query)){
+    
+    $interval = date_diff(date_create(date('Y-m-d')), date_create($r->ESSENTIAL_JOINING_DATE));
+?>
+  <tr>
+    <td><?=$s1++;?></td>
+    <td><div align="center"><?=$r->PBI_CODE?></div></td>
+    <td><?=$r->PBI_NAME?></td>
+    <td><?=find_a_field('designation','DESG_SHORT_NAME','DESG_ID='.$r->PBI_DESIGNATION);?></td>
+    <?php
 
+ if($r->PBI_DEPARTMENT == 13){ ?>
+    <td></td>
+    <?php } else{ ?>
+    <td><?=find_a_field('department','DEPT_SHORT_NAME','DEPT_ID='.$r->PBI_DEPARTMENT);?></td>
+    <?php } ?>
 
+    <td><?=find_a_field('project','PROJECT_DESC','PROJECT_ID='.$r->JOB_LOCATION);?></td>
 
+    <td><div align="center"><?=date('d-M-Y',strtotime($r->ESSENTIAL_JOINING_DATE))?></div></td>
+    <td><div align="center"><?=$interval->format("%Y Y, %M M, %d D");?></div></td>
+   <td><?=$r->PBI_MOBILE?></td>
+    <td><div align="center"><?=find_a_field('personnel_basic_info','PBI_NAME','PBI_ID='.$r->ESSENTIAL_REPORTING);?></div></td>
+ 
+  </tr>
+  <? } ?>
 
 
 
@@ -81519,13 +81581,152 @@ $percentage_total = ($total_inc *100)/$total_previous;
 
 
 
+</table>
 
 
+<br>
 
 
 
 
 
+
+
+
+<?
+}
+
+
+
+if($_POST['report']==1448)
+
+
+{
+
+$report="Yearly Increment Report";
+
+?>
+
+<table style="width: auto; margin: 0 auto; font-size: 20px;text-align:center;" border="1" bordercolor="#FFFFFF">
+  <tr>
+    <td style="border:0px solid white; font-family: bangothic;"><strong>AKSID CORPORATION LIMITED.</strong></td>
+  </tr>
+  <tr>
+  <td style="border:0px solid white;"><strong>Increment List of <?= $_POST['year']?></strong></td>
+  </tr>
+</table>
+
+
+ 
+
+   <div align="center" style="font-size:17px"><strong>Slot 3 (September-December)</strong></div>
+ 
+  <table style="width:auto;margin:0 auto;" cellpadding="0" cellspacing="0" border="1">
+  
+  
+  
+  
+    <tr>
+      <td><strong>SL</strong></td>
+      <td><strong>EMP ID</strong></td>
+     
+      <td><strong>Employee Name</strong></td>
+      <td><strong><div align="center">Designation</div></strong></td>
+      <td><strong><div align="center">Department</div></strong></td>
+      <td><strong>Project/Job Location</strong></td>
+      <td><strong><div align="center">Joining Date</div></strong></td>
+      <td><strong><div align="center">TOTAL SERVICE LENGTH</div></strong></td>
+      <td><strong><div align="center">MOBILE</div></strong></td>
+      <td><strong><div align="center">REPORTING AUTH</div></strong></td>
+
+    </tr>
+ 
+  <?
+
+	
+
+
+	if($_POST['department'] !='')
+	$tr_con = ' and a.PBI_DEPARTMENT="'.$_POST['department'].'"';
+
+	if($_POST['JOB_LOCATION'] !='')
+	$tr_con = ' and a.JOB_LOCATION="'.$_POST['JOB_LOCATION'].'"';
+
+
+
+	    $basic_sql='select a.PBI_ID,a.PBI_CODE,e.ESSENTIAL_JOINING_DATE,
+
+		a.PBI_NAME ,a.PBI_DESIGNATION ,a.PBI_DEPARTMENT,a.JOB_LOCATION,
+		DATEDIFF(NOW(), e.ESSENTIAL_JOINING_DATE) AS days_worked,e.ESSENTIAL_REPORTING,a.PBI_MOBILE
+		
+		from personnel_basic_info a,essential_info e
+
+		where 
+		a.PBI_ID NOT IN (SELECT i.PBI_ID FROM  increment_detail i) and a.PBI_JOB_STATUS="In Service" and
+		DATE_ADD(e.ESSENTIAL_JOINING_DATE, INTERVAL 1 YEAR) BETWEEN "'.$_POST['year'].'-09-01" AND "'.$_POST['year'].'-12-30"   
+		and e.PBI_ID=a.PBI_ID '.$tr_con.' group by a.PBI_ID order by e.ESSENTIAL_JOINING_DATE';
+
+
+
+	$basic_query = mysql_query($basic_sql);
+	$s1=1;
+	while($r = mysql_fetch_object($basic_query)){
+    
+    $interval = date_diff(date_create(date('Y-m-d')), date_create($r->ESSENTIAL_JOINING_DATE));
+?>
+  <tr>
+    <td><?=$s1++;?></td>
+    <td><div align="center"><?=$r->PBI_CODE?></div></td>
+    <td><?=$r->PBI_NAME?></td>
+    <td><?=find_a_field('designation','DESG_SHORT_NAME','DESG_ID='.$r->PBI_DESIGNATION);?></td>
+    <?php
+
+ if($r->PBI_DEPARTMENT == 13){ ?>
+    <td></td>
+    <?php } else{ ?>
+    <td><?=find_a_field('department','DEPT_SHORT_NAME','DEPT_ID='.$r->PBI_DEPARTMENT);?></td>
+    <?php } ?>
+
+    <td><?=find_a_field('project','PROJECT_DESC','PROJECT_ID='.$r->JOB_LOCATION);?></td>
+
+    <td><div align="center"><?=date('d-M-Y',strtotime($r->ESSENTIAL_JOINING_DATE))?></div></td>
+    <td><div align="center"><?=$interval->format("%Y Y, %M M, %d D");?></div></td>
+    <td><?=$r->PBI_MOBILE?></td>
+    <td><div align="center"><?=find_a_field('personnel_basic_info','PBI_NAME','PBI_ID='.$r->ESSENTIAL_REPORTING);?></div></td>
+ 
+  </tr>
+  <? } ?>
+
+
+
+
+
+
+
+
+
+
+
+
+</table>
+
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?
+}
 
 
 
@@ -82841,7 +83042,7 @@ $assesment_end_year = $fiscal_year[1];
 			<th rowspan="2"><div align="center">Festival Bonus</div></th>
 			<th rowspan="2"><div align="center">Tax deducted</div></th>
 
-			<th colspan="4"><div align="center">Investment for Rebet</div></th>
+			<th colspan="4"><div align="center">Investment for Rebate</div></th>
 
 	</tr>
   <tr>
@@ -82888,7 +83089,7 @@ $basic_query = mysql_query($basic_sql);
 
 
 
-	  $sql_1 = 'select sum(gross_salary) as gross_salary,sum(basic_salary) as basic_salary,sum(house_rent) as house_rent,sum(medical_allowance) as medical_allowance, sum(special_allowance) as conveyance_allowance,
+	   $sql_1 = 'select sum(gross_salary) as gross_salary,sum(basic_salary) as basic_salary,sum(house_rent) as house_rent,sum(medical_allowance) as medical_allowance, sum(special_allowance) as conveyance_allowance,
 	 sum(food_allowance) as arrear, sum(income_tax) as income_tax,bank_or_cash,sum(bank_amt) as bank_amt from salary_attendence
 	 where salary_date between "'.$f_date.'" and  "'.$t_date.'" and PBI_ID="'.$tf->PBI_ID.'"';
 
@@ -87105,11 +87306,11 @@ $report="Individual fiscal salary statement";
 
 
 
- $m = find_a_field('salary_bonus','cut_off_date','bonus_type=1 and year="'.$next_year.'"');
+ $m = find_a_field('salary_bonus','bonus_date','bonus_type=1 and year="'.$next_year.'"');
 
 
 
- $m2 = find_a_field('salary_bonus','cut_off_date','bonus_type=2 and year="'.$next_year.'"');
+ $m2 = find_a_field('salary_bonus','bonus_date','bonus_type=2 and year="'.$next_year.'"');
 
 
 
@@ -87218,7 +87419,7 @@ $report="Individual fiscal salary statement";
 
 
 
-				$bonus1 = find_a_field('salary_bonus','year','cut_off_date between "'.$start.'" and "'.$end.'" and bonus_type = 1');
+				$bonus1 = find_a_field('salary_bonus','year','bonus_date between "'.$start.'" and "'.$end.'" and bonus_type = 1');
 
 
 
@@ -87230,7 +87431,7 @@ $report="Individual fiscal salary statement";
 
 
 
-				$bonus2 = find_a_field('salary_bonus','year','cut_off_date between "'.$start.'" and "'.$end.'" and bonus_type = 2');
+				$bonus2 = find_a_field('salary_bonus','year','bonus_date between "'.$start.'" and "'.$end.'" and bonus_type = 2');
 
 
 
@@ -89490,8 +89691,8 @@ if($_POST['report']==21231212){
 $report="Individual fiscal salary statement";
 
 $next_year = $_POST['year']-1;
-$m = find_a_field('salary_bonus','cut_off_date','bonus_type=1 and year="'.$next_year.'"');
-$m2 = find_a_field('salary_bonus','cut_off_date','bonus_type=2 and year="'.$next_year.'"');
+$m = find_a_field('salary_bonus','bonus_date','bonus_type=1 and year="'.$next_year.'"');
+$m2 = find_a_field('salary_bonus','bonus_date','bonus_type=2 and year="'.$next_year.'"');
 
 ?>
 <table width="100%" cellspacing="0" cellpadding="2" border="0">
@@ -89570,11 +89771,17 @@ $bonus2 = find_a_field('salary_bonus','year','cut_off_date between "'.$start.'" 
           <?=date('F',strtotime($m))?>
           <? }  ?>
         </div></th>
-      <th rowspan="2"><div align="center">Total</div></th>
+        <th rowspan="2"><div align="center">Sales Commission</div></th>
+        <th rowspan="2"><div align="center">Total</div></th>
     </tr>
   </thead>
   <tbody>
     <?
+
+
+
+    
+
 
 if($_POST['department'] !='')
 $tr_con = ' and p.PBI_DEPARTMENT="'.$_POST['department'].'"';
@@ -89586,17 +89793,29 @@ $tr_con .= ' and p.PBI_JOB_STATUS="'.$_POST['job_status'].'"';
 
 $salary_sql = 'select p.PBI_ID, p.PBI_CODE,
 p.PBI_NAME,p.PBI_DOJ,(select DESG_DESC from designation where DESG_ID=p.PBI_DESIGNATION) as designation
-from personnel_basic_info p where 1 '.$tr_con.' order by p.PBI_DOJ ';
+from personnel_basic_info p,salary_info s where s.PBI_ID=p.PBI_ID '.$tr_con.' order by s.gross_salary desc';
 
 $s_query = mysql_query($salary_sql);
 
 while($tf = mysql_fetch_object($s_query)){
+
+
+
+
+
+
+
 
 $final_sql = 'select sum(gross_salary) as total_amt,bank_or_cash
 from salary_attendence where year="'.$_POST['year'].'" and PBI_ID="'.$tf->PBI_ID.'" order by (gross_salary) desc';
 $final_query = mysql_query($final_sql);
 while($final = mysql_fetch_object($final_query)){
 if($final->total_amt>0){
+
+
+
+
+
 
 
 
@@ -89650,15 +89869,85 @@ if($final->total_amt>0){
 $start = $next_year.'-07-01';
 $end =  $_POST['year'].'-06-30';
 
-?>
-      <td align="right"><?=(number_format($eid_ul_fitre =find_a_field('salary_bonus','SUM(bonus_amt)','bonus_date between "'.$start.'" and 
+?>    
+
+  <? if($final->bank_or_cash==5){ ?>
+
+  	 <td align="right"><?=(number_format($eid_ul_fitre =find_a_field('salary_bonus','SUM(bank_paid)','bonus_date between "'.$start.'" and
+      "'.$end.'" and bonus_type = 2 and PBI_ID='.$tf->PBI_ID),0)>0)? number_format($eid_ul_fitre,0) : '';?></td>
+
+
+      <td align="right"><?=(number_format($eid_ul_adha =find_a_field('salary_bonus','SUM(bank_paid)','bonus_date between "'.$start.'" and "'.$end.'" and bonus_type = 1 and PBI_ID='.$tf->PBI_ID),0)>0)? number_format($eid_ul_adha,0) : '';?></td>
+
+
+  	<? }else{ ?>
+
+      <td align="right"><?=(number_format($eid_ul_fitre =find_a_field('salary_bonus','SUM(bonus_amt)','bonus_date between "'.$start.'" and
       "'.$end.'" and bonus_type = 2 and PBI_ID='.$tf->PBI_ID),0)>0)? number_format($eid_ul_fitre,0) : '';?></td>
 
 
       <td align="right"><?=(number_format($eid_ul_adha =find_a_field('salary_bonus','SUM(bonus_amt)','bonus_date between "'.$start.'" and "'.$end.'" and bonus_type = 1 and PBI_ID='.$tf->PBI_ID),0)>0)? number_format($eid_ul_adha,0) : '';?></td>
 
+  <? } ?>
 
-      <td align="right"><?=number_format($tot = $jan+$feb+$march+$april+$may+$june+$july+$august+$sept+$oct+$nov+$dec+$eid_ul_adha+$eid_ul_fitre,0)?></td>
+
+
+  <td align="right">
+
+
+  <?
+
+
+//TAX INVESMENT AMOUNT
+ $sqldd = 'select t.PBI_ID,
+sum(t.jan_com) as jan_com,sum(t.feb_com) as feb_com,sum(t.mar_com) as mar_com,sum(t.apr_com) as apr_com,sum(t.may_com) as may_com,
+sum(t.jun_com) as jun_com,
+sum(t.jul_com) as jul_com,sum(t.aug_com) as aug_com,sum(t.sep_com) as sep_com,sum(t.oct_com) as oct_com,sum(t.nov_com) as nov_com,
+sum(t.dec_com) as dec_com,sum(t.special_consideration) as special_consideration,
+sum(t.tax_deduction) as tax_deduction,sum(t.advance_deduction) as advance_deduction
+
+from
+monthly_sales_commission t
+
+where
+t.PBI_ID="'.$tf->PBI_ID.'" and
+t.financial_year between "'.$start.'" and  "'.$end.'"
+group by t.PBI_ID';
+
+$querydd=mysql_query($sqldd);
+
+
+while($conData = mysql_fetch_object($querydd)){
+
+ $net_convaince = $conData->jan_com+$conData->feb_com+$conData->mar_com+$conData->apr_com+$conData->may_com+$conData->jun_com+$conData->jul_com+
+$conData->aug_com+$conData->sep_com+$conData->oct_com+$conData->nov_com+$conData->dec_com+$conData->special_consideration;
+
+
+echo number_format($tot_net_convaince = $net_convaince ,0);
+
+
+$grand_net_convaincee += $tot_net_convaince;
+
+}
+
+//END TAX INVESMENT AMOUNT
+
+
+
+  ?>
+
+
+
+
+
+
+
+  	</td>
+ 
+
+
+  <td align="right">
+  	<?=number_format($tot = $jan+$feb+$march+$april+$may+$june+$july+$august+$sept+$oct+$nov+$dec+$eid_ul_adha+$eid_ul_fitre+$tot_net_convaince,0)?></td>
     </tr>
     <?
 $july_total = $july_total+$july;
@@ -89679,6 +89968,8 @@ $may_total = $may_total+$may;
 $june_total = $june_total+$june;
 $eid_ul_adha_total = $eid_ul_adha_total+$eid_ul_adha;
 $eid_ul_fitre_total = $eid_ul_fitre_total+$eid_ul_fitre;
+$grand_net_convaince = $grand_net_convaincee;
+
 $grand_total = $grand_total+$tot;
 
 
@@ -89736,9 +90027,15 @@ $grand_total = $grand_total+$tot;
       <td><strong>
         <?=number_format($eid_ul_adha_total,0);?>
         </strong></td>
+         <td><strong>
+        <?=number_format($grand_net_convaince,0);?>
+        </strong></td>
+
       <td><strong>
         <?=number_format($grand_total,0);?>
         </strong></td>
+
+        
     </tr>
   </tbody>
 </table>
@@ -89839,7 +90136,7 @@ $next_year = $_POST['year']-1;
 
 
 
-				$bonus1 = find_a_field('salary_bonus','year','cut_off_date between "'.$start.'" and "'.$end.'" and bonus_type = 1');
+				$bonus1 = find_a_field('salary_bonus','year','bonus_date between "'.$start.'" and "'.$end.'" and bonus_type = 1');
 
 
 
@@ -89851,7 +90148,7 @@ $next_year = $_POST['year']-1;
 
 
 
-				$bonus2 = find_a_field('salary_bonus','year','cut_off_date between "'.$start.'" and "'.$end.'" and bonus_type = 2');
+				$bonus2 = find_a_field('salary_bonus','year','bonus_date between "'.$start.'" and "'.$end.'" and bonus_type = 2');
 
 
 
@@ -89883,11 +90180,11 @@ $next_year = $_POST['year']-1;
 
 
 
-				$m = find_a_field('salary_bonus','cut_off_date','bonus_type=1 and year="'.$_POST['year'].'"');
+				$m = find_a_field('salary_bonus','bonus_date','bonus_type=1 and year="'.$_POST['year'].'"');
 
 
 
-				$m2 = find_a_field('salary_bonus','cut_off_date','bonus_type=2 and year="'.$_POST['year'].'"');
+				$m2 = find_a_field('salary_bonus','bonus_date','bonus_type=2 and year="'.$_POST['year'].'"');
 
 
 
@@ -94323,6 +94620,10 @@ while($r = mysql_fetch_object($basic_query)){
 <br>
 <br>
 <br>
+
+
+
+
 <?
 
 }
@@ -94415,6 +94716,174 @@ while($r = mysql_fetch_object($basic_query)){
 
 
 <!-- New Report tax information -->
+
+
+
+
+<?
+
+}
+
+if($_POST['report']==155){
+$report="Employee Basic Information";
+?>
+<table style="width: auto; margin: 0 auto; font-size: 20px;text-align:center;" border="1" bordercolor="#FFFFFF">
+  <tr>
+    <td style="border:0px solid white;font-family:bankgothic; font-size:20px"><strong>AKSID CORPORATION LIMITED</strong></td>
+  </tr>
+  <tr>
+    <td style="border:0px solid white;"><strong>Employee NID Information</strong></td>
+  </tr>
+</table>
+<table style="width:auto;margin:0 auto;" cellpadding="0" cellspacing="0" border="1">
+  <thead>
+    <tr>
+      <td align="center"><strong>Sl</strong></td>
+      <td align="center"><strong>ID</strong></td>
+
+      <td align="center"><strong>NAME</strong></td>
+      <td align="center"><strong>DESIGNATION</strong></td>
+      <td align="center"><strong>DEPARTMENT</strong></td>
+      <td align="center"><strong>PROJECT</strong></td>
+			<td align="center"><strong>TERRITORY</strong></td>
+      <td align="center"><strong>JOINING DATE</strong></td>
+      <td align="center"><strong>TOTAL SERVICE LENGTH</strong></td>
+      <td align="center"><strong>MOBILE</strong></td>
+      <td align="center"><strong>MOBILE LIMIT</strong></td>
+      <td align="center"><strong>EMAIL</strong></td>
+      <td align="center"><strong>REPORTING AUTH</strong></td>
+      <td align="center"><strong>NID NO</strong></td>
+      <td align="center"><strong>NID IMAGE</strong></td>
+    </tr>
+  </thead>
+  <?
+$basic_sql="select a.PBI_ID as Emp_ID,a.PBI_CODE as PBI_CODE,a.PBI_NAME as Name,(select DESG_SHORT_NAME from designation where DESG_ID=a.PBI_DESIGNATION) as designation,a.ESSENTIAL_VOTER_ID,
+e.ESSENTIAL_REPORTING as reporting,
+(select if(DEPT_DESC='NO DEPARTMENT','',DEPT_DESC) from department where DEPT_ID=a.PBI_DEPARTMENT) as department,(select PROJECT_DESC
+from project where PROJECT_ID=a.JOB_LOCATION) as project_name, DATE_FORMAT(a.PBI_DOJ,'%d-%b-%Y') as joining_date,a.PBI_DOJ as total_service_length,
+a.PBI_MOBILE as mobile,a.PBI_EMAIL,e.ESSENTIAL_RESIG_DATE,a.PBI_JOB_STATUS,e.territory as territory_emp  
+from personnel_basic_info a,essential_info e where a.PBI_ID=e.PBI_ID ".$con." group by a.PBI_ID order by a.PBI_DOJ asc";
+
+$basic_query = mysql_query($basic_sql);
+
+
+$sl = 1;
+while($r = mysql_fetch_object($basic_query)){
+
+?>
+  <tr>
+    <td><?=$sl++;?></td>
+
+		<td align="center"><?=$r->PBI_CODE?></td>
+    <td><?=$r->Name?></td>
+    <td><?=$r->designation?></td>
+    <td align="center"><?=$r->department?></td>
+    <td align="center"><?=$r->project_name?></td>
+		<td align="center"><?=$r->territory_emp?></td>
+    <td align="center"><?=$r->joining_date?></td>
+    <td align="center">
+
+
+			<?
+
+		$interval = date_diff(date_create(date('Y-m-d')), date_create($r->joining_date));
+    $past_interval = date_diff(date_create($r->ESSENTIAL_RESIG_DATE), date_create($r->joining_date));
+
+		if($r->ESSENTIAL_RESIG_DATE>0){
+			echo $past_interval->format("%Y Y, %M M, %d D");
+		}else{
+    echo $interval->format("%Y Y, %M M, %d D");
+	}
+
+
+		?>
+
+		</td>
+    <td align="center"><?=$r->mobile?></td>
+     <td align="center"><?=find_a_field('salary_info','mobile_allowance','PBI_ID="'.$r->Emp_ID.'"'); ?></td>
+    <td align="center"><?=$r->PBI_EMAIL?></td>
+
+    <td align="center"><?=find_a_field('personnel_basic_info','PBI_NAME','PBI_ID="'.$r->reporting.'"'); ?></td>
+
+    <td align="center"><?=$r->ESSENTIAL_VOTER_ID;?></td>
+
+
+		                  <?
+
+				
+
+			    	          //$directory = "../../pic/staff/".$r->Emp_ID.".jpeg";
+							  
+							
+
+				       //Employee Pic
+
+								$imgJPG = "../../pic/nid/".$r->Emp_ID.".JPG";
+
+								$imgjpg = "../../pic/nid/".$r->Emp_ID.".jpg";
+
+								$imgPNG = "../../pic/nid/".$r->Emp_ID.".PNG";
+
+								$imgJPEG = "../../pic/nid/".$r->Emp_ID.".jpeg";
+
+								$imgpng2 = "../../pic/nid/".$r->Emp_ID.".png";
+
+								if(file_exists($imgJPEG)){
+
+								  $link = $imgJPEG;
+
+								}elseif(file_exists($imgJPG)){
+
+								  $link = $imgJPG;
+
+								}elseif(file_exists($imgjpg)){
+
+								  $link = $imgjpg;
+
+								}elseif(file_exists($imgJPEG)){
+
+								  $link = $imgJPEG;
+
+								}elseif(file_exists($imgpng2)){
+
+								  $link = $imgpng2;
+
+								}else $link = '';
+
+				 
+
+				 
+
+				
+
+			if(file_exists($link)) {?>
+
+<td>
+
+<a href="<?=$link?>" target="_blank">
+  <img src="<?=$link?>" width="60" height="60"/>
+</a>
+
+</td>
+
+				<? }else{?>
+				
+<td><img src="../../pic/staff/default.png" width="60" height="60"/></td>
+
+				<? } ?>
+    
+  </tr>
+<?
+
+}
+?>
+
+
+</table>
+
+
+<!-- New Report tax information -->
+
 
 <br>
 <br>
@@ -94524,6 +94993,146 @@ while($r = mysql_fetch_object($basic_query)){
 
 }
 ?>
+
+
+</table>
+
+</br>
+</br>
+
+
+<!--End tax information  -->
+
+
+
+
+
+
+<!-- New Report tax information -->
+
+
+<br>
+<br>
+<?
+
+}
+
+if($_POST['report']==177332){
+$report="Employee Basic Information";
+?>
+<table style="width: auto; margin: 0 auto; font-size: 20px;text-align:center;" border="1" bordercolor="#FFFFFF">
+  <tr>
+    <td style="border:0px solid white;font-family:bankgothic; font-size:20px"><strong>AKSID CORPORATION LIMITED</strong></td>
+  </tr>
+  <tr>
+    <td style="border:0px solid white;"><strong>TDS Challan Report</strong></td>
+  </tr>
+</table>
+<table style="width:auto;margin:0 auto;" cellpadding="0" cellspacing="0" border="1">
+  <thead>
+    <tr>
+      <td align="center"><strong>Sl</strong></td>
+      <td align="center"><strong>ID</strong></td>
+      <td align="center"><strong>NAME</strong></td>
+      <td align="center"><strong>DESIGNATION</strong></td>
+	  <td align="center"><strong>JOINING DATE</strong></td>
+	  <td align="center"><strong>TIN No</strong></td>
+	  <td align="center"><strong>DEPARTMENT</strong></td>
+      <td align="center"><strong>JOB LOCATION/PROJECT</strong></td>
+      <td align="center"><strong>Tax Challan No</strong></td>
+      <td align="center"><strong>Tax Challan Date</strong></td>
+      <td align="center"><strong>TAX Year</strong></td>
+	  <td align="center"><strong>Assesment Year</strong></td>
+	  <td align="center"><strong>Challan Amount</strong></td>
+
+
+    </tr>
+  </thead>
+  <?
+
+if($_POST['department'] !='')
+$tr_con = ' and p.PBI_DEPARTMENT="'.$_POST['department'].'"';
+
+
+if($_POST['JOB_LOCATION'] !='')
+$tr_con .= ' and p.JOB_LOCATION="'.$_POST['JOB_LOCATION'].'"';
+
+if($_POST['job_status'] !='')
+$tr_con .= ' and p.PBI_JOB_STATUS="'.$_POST['job_status'].'"';
+
+
+
+$fiscal_year = explode("-",$_POST['financial_year']);
+$year_1 = $fiscal_year[0]-1;
+$year_2 = $fiscal_year[1]-1;
+$f_date = $year_1.'-07-01';
+$t_date = $year_2.'-06-30';
+
+//Assesment Year
+$assesment_start_year = $fiscal_year[0];
+$assesment_end_year = $fiscal_year[1];
+
+
+$basic_sql= 'select p.ESSENTIAL_TIN_NO, DATE_FORMAT(p.PBI_DOJ,"%d-%b-%Y") as joining_date,i.cash,p.tax_zone,
+CONCAT(p.tax_circle,", ",p.tax_zone) as tax_info,
+ p.PBI_ID,p.PBI_CODE,p.PBI_NAME,i.basic_salary,(select DEPT_DESC from department where DEPT_ID=p.PBI_DEPARTMENT) as department,
+(select DESG_DESC from designation where DESG_ID=p.PBI_DESIGNATION) as designation,
+(select PROJECT_DESC from project where PROJECT_ID=p.JOB_LOCATION) as project,t.tax_chalan_no,t.assesment_s_year,
+t.assesment_e_year,t.chalan_amt,t.s_mon,t.e_mon,t.s_year,t.e_year,t.chalan_start_date
+
+
+from personnel_basic_info p, salary_info i,emp_taxchalan_no t
+where p.PBI_ID=i.PBI_ID  and p.PBI_ID=t.PBI_ID and t.assesment_s_year='.$assesment_start_year.' and  t.assesment_e_year='.$assesment_end_year.'
+
+  '.$tr_con.' order by t.PBI_ID,t.chalan_start_date' ;
+
+
+$basic_query = mysql_query($basic_sql);
+
+
+$sl = 1;
+while($r = mysql_fetch_object($basic_query)){
+
+?>
+  <tr>
+    <td><?=$sl++;?></td>
+    <td align="center"><?=$r->PBI_CODE?></td>
+    <td><?=$r->PBI_NAME?></td>
+    <td><?=$r->designation?></td>
+    <td align="center"><?=$r->joining_date?></td>
+	<td align="center"><?=$r->ESSENTIAL_TIN_NO?></td>
+	<td align="center"><?=$r->department?></td>
+    <td align="center"><?=$r->project?></td>
+    <td align="center"><?=$r->tax_chalan_no;?></td>
+		
+
+		
+    <td align="center"><? echo date('d-M-Y',strtotime($r->chalan_start_date))?></td>
+	<td align="center"><?=$r->s_year?>-<?=$r->e_year?></td>
+	<td align="center"><?=$r->assesment_s_year?>-<?=$r->assesment_e_year?></td>
+	<td align="center"><?=$r->chalan_amt;  $tot_amount +=$r->chalan_amt;?></td>
+
+
+
+
+
+  </tr>
+
+
+     
+
+<?
+
+}
+?>
+
+
+
+     <tr>
+      <td colspan="12" align="right"><strong>Total</strong></td>
+      <td align="right"><strong><?=number_format($tot_amount);?></strong></td>
+   
+    </tr>
 
 
 </table>
@@ -94999,98 +95608,13 @@ where a.PBI_ID=b.PBI_ID and b.EMPLOYMENT_TYPE='Probationary' and a.PBI_JOB_STATU
 
 
 
+	  $basic_sql="select a.PBI_ID as Emp_ID,a.PBI_CODE,DATE_FORMAT(a.PBI_REAL_BIRTH,'%d-%b-%Y') as birth_date,a.PBI_NAME as Name,
 
+	DATE_FORMAT(e.ESSENTIAL_RESIG_DATE,'%d-%b-%Y') as effective_date,a.PBI_DOJ as total_service_length,a.PBI_MOBILE as mobile,s.cash,s.card_no,s.cash_bank
 
+	from personnel_basic_info a,salary_info s,essential_info e 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   echo  $basic_sql="select a.PBI_ID as Emp_ID,a.PBI_CODE,DATE_FORMAT(a.PBI_REAL_BIRTH,'%d-%b-%Y') as birth_date,a.PBI_NAME as Name,
-
-
-
-
-
-
-
-     DATE_FORMAT(e.ESSENTIAL_RESIG_DATE,'%d-%b-%Y') as effective_date,a.PBI_DOJ as total_service_length,a.PBI_MOBILE as mobile,s.cash,s.card_no,s.cash_bank
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-     from personnel_basic_info a,salary_info s,essential_info e where a.PBI_ID=s.PBI_ID and a.PBI_ID=e.PBI_ID  and a.PBI_ID not in (8,9,10,11,20,23,25,31) ".$con." GROUP BY e.ESSENTIAL_RESIG_DATE ";
+	where a.PBI_ID=s.PBI_ID and a.PBI_ID=e.PBI_ID and e.ESSENTIAL_RESIG_DATE>0  and a.PBI_ID not in (8,9,10,11,20,23,25,31) ".$con." GROUP BY e.ESSENTIAL_RESIG_DATE ";
 
 
 
@@ -100628,7 +101152,7 @@ $entry_by=$data2->entry_by;
 		 <td><div align="center"><?=$data2->PBI_CODE?></div></td>
 		 <td><div align="center"><?=$data2->PBI_NAME?></div></td>
 
-	<td><div align="center"><? if($data2->PBI_DEPARTMENT!=13){ 
+	<td><div align="center"><? if($data2->PBI_DEPARTMENT!=13){
 		echo find_a_field('department','DEPT_DESC','DEPT_ID='.$data2->PBI_DEPARTMENT);}?></div></td>
 
 	<td><div align="center"><?=find_a_field('project','PROJECT_DESC','PROJECT_ID='.$data2->job_location);?></div></td>
@@ -100724,10 +101248,10 @@ $advice_con.=' and t.pbi_department ="'.$_POST['department'].'"';
 ?>
 <table  width="100%" cellspacing="0" cellpadding="2" border="0">
   <thead>
- 
+
 
     <tr><td style="border:0px; padding-right:100px" colspan="29" align="center"><?=$str?></td></tr>
-   
+
  <?
 
 
@@ -100824,7 +101348,7 @@ $entry_by=$data2->entry_by;
 		 <td><div align="center"><?=$data2->PBI_CODE?></div></td>
 		 <td><div align="center"><?=$data2->PBI_NAME?></div></td>
 
-	<td><div align="center"><? if($data2->PBI_DEPARTMENT!=13){ 
+	<td><div align="center"><? if($data2->PBI_DEPARTMENT!=13){
 		echo find_a_field('department','DEPT_DESC','DEPT_ID='.$data2->PBI_DEPARTMENT);}?></div></td>
 
 	<td><div align="center"><?=find_a_field('project','PROJECT_DESC','PROJECT_ID='.$data2->job_location);?></div></td>
@@ -102645,7 +103169,7 @@ while($jl_result = mysql_fetch_object($jl_query)){
   <tr>
     <td><strong><span style="float:right; font-weight:bold;">Grand Total :</span></strong></td>
     <td><strong><span style="float:right; font-weight:bold;">
-      <?=number_format($grandTotal=($tot_dept_proj3+$tot_dept_proj+$tot_dept_proj_bkash));?> 
+      <?=number_format($grandTotal=($tot_dept_proj3+$tot_dept_proj+$tot_dept_proj_bkash));?>
       </span></strong></td>
   </tr>
 </table>
@@ -108869,7 +109393,7 @@ t.mon='.$_POST['mon'].' and t.year='.$_POST['year'].' and t.PBI_ID=a.PBI_ID '.$c
 
 $sqld2 = 'select t.*,  a.PBI_NAME, i.cash, i.card_no, i.cash_bank,i.cash_amt,i.bank_amt,i.gross_salary,dept.DEPT_DESC
 from salary_bonus t,designation d, personnel_basic_info a, salary_info i, department dept
-where t.pbi_department=dept.DEPT_ID and i.PBI_ID = t.PBI_ID and t.bonus_amt>0 and t.bank_or_cash NOT IN (1,6) and t.pbi_designation = d.DESG_ID and t.bonus_type='.$_POST['bonus_type'].' and 
+where t.pbi_department=dept.DEPT_ID and i.PBI_ID = t.PBI_ID and t.bonus_amt>0 and t.bank_or_cash NOT IN (1,6) and t.pbi_designation = d.DESG_ID and t.bonus_type='.$_POST['bonus_type'].' and
 t.year='.$_POST['year'].' and t.PBI_ID=a.PBI_ID and t.pbi_department not in (13) '.$advice_con.'  order by dept.DEPT_DESC asc ,t.bonus_amt desc';
 
 

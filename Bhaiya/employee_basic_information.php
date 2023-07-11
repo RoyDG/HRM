@@ -1147,7 +1147,7 @@ if (isset($$unique)) {
 
 
 
-                                              <td bgcolor="#FFFFFF" class="oe_form_group_cell"><strong>&nbsp; </strong>Date of birth (Orginal):</td>
+                                              <td bgcolor="#FFFFFF" class="oe_form_group_cell"><strong>&nbsp; </strong>Birthday :</td>
 
 
 

@@ -189,7 +189,8 @@ $$unique = $_GET[$unique];
                                             $res = 'SELECT o.' . $unique . ', o.' . $unique . ',
                                             (SELECT DEPT_DESC FROM department WHERE DEPT_ID=o.department) AS department,
                                             (SELECT PROJECT_DESC FROM project WHERE PROJECT_ID=o.project) AS project,
-                                            ' . $shown . ', 
+                                            
+                                            TIME_FORMAT(o.office_start_time, "%h:%i %p") AS office_start_time, 
                                             TIME_FORMAT(o.office_end_time, "%h:%i %p") AS office_end_time
                                             FROM ' . $table . ' o';
                                             echo $crud->link_report($res, $link);
