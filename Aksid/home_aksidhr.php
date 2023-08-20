@@ -1011,8 +1011,21 @@ while ($dd = mysql_fetch_object($query)) {
 
     }
 
-       
+        
+
   </style>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1020,93 +1033,186 @@ while ($dd = mysql_fetch_object($query)) {
 
 <!-- Main page content -->
 
+
+
+
+
 <div class="right_col" role="main">
+
+
+
 	<div class="row tile_count">
+
+
 
 		<div class="col-md-2 col-sm-4 col-xs-6" style="padding-left:5px; padding-right:5px;">
 
+
+
 			<a href="btrc_report.php" target="_blank">
+
+
 
 				<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 tile_stats_count pt-2 pb-2">
 
-					<p class="font bold" style="margin:0px;" align="center">
-						 Total Employees
-					</p>
 
-					<div class="count big-font" align="center">
-						<i class="fa fa-users"></i>
+
+
+
+
+
+					<p class="font bold" style="margin:0px;" align="center"><!--<i class="fa fa-user"></i>--> Total Employees </p>
+
+
+
+
+
+
+
+					<div class="count big-font" align="center"> <i class="fa fa-users"></i>
+
+
+
+
+
+
 
 						<?
-							$sql = "SELECT count(p.PBI_ID) as total FROM personnel_basic_info as p 
-							INNER JOIN salary_info s ON s.PBI_ID = p.PBI_ID 
-							WHERE s.basic_salary IS NOT NULL AND s.basic_salary <> ''" . $con;						
-						
-							$result = mysql_query($sql);
-							$values = mysql_fetch_assoc($result);
-							$num_rows = $values['total'];
-							echo $num_rows; 
+
+
+
+						$sql = "SELECT count(PBI_ID) as total FROM personnel_basic_info" . $con;
+
+
+
+
+
+
+
+						$result = mysql_query($sql);
+
+
+
+
+
+
+
+						$values = mysql_fetch_assoc($result);
+
+
+
+
+
+
+
+						$num_rows = $values['total'];
+
+
+
+
+
+
+
+						echo $num_rows; 
+
+
+
 						?>
 
+
+
+
+
+
+
 					</div>
+
+
+
 				</div>
+
+
+
 			</a>
+
+
+
 		</div>
 
 
 
 
 
+
+
 		<div class="col-md-2 col-sm-4 col-xs-6" style="padding-left:5px; padding-right:5px;">
 
+
+
 			<a href="dashboard_report.php" target="_blank">
+
+
+
 				<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 tile_stats_count pt-2 pb-2">
 
+
+
 					<p class="font bold" style="margin:0px;" align="center"><!--<i class="fa fa-user"></i>--> In Service </p>
+
+
 
 					<div class="count big-font" align="center"> <i class="fas fa-user-check fa-xs"></i>
 
 
-					<?						
-						$sql = "SELECT count(e.PBI_ID) as total FROM personnel_basic_info e 
-						INNER JOIN salary_info s ON s.PBI_ID = e.PBI_ID
-						
-						WHERE PBI_JOB_STATUS='In Service' and s.basic_salary IS NOT NULL AND s.basic_salary <> ''" . $con;
-
-						$result = mysql_query($sql);
-						$values = mysql_fetch_assoc($result);
-						$num_rows = $values['total'];
-						echo $num_rows;
-					?>
-
-					</div>
-				</div>
-			</a>
-		</div>
 
 
 
-		<div class="col-md-2 col-sm-4 col-xs-6" style="padding-left:5px; padding-right:5px;">
-			<a target="_blank">
-				<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 tile_stats_count pt-2 pb-2">
-					<p class="font bold" style="margin:0px;" align="center"><!--<i class="fa fa-user"></i>--> Not in Service </p>
-					<div class="count big-font" align="center"> <i class="fas fa-users-slash"></i>
 
 
 					<?
-						$sql = "SELECT count(e.PBI_ID) as total FROM personnel_basic_info e 
-						INNER JOIN salary_info s ON s.PBI_ID = e.PBI_ID
-						
-						WHERE PBI_JOB_STATUS='Not In Service' and s.basic_salary IS NOT NULL AND s.basic_salary <> ''" . $con;
+
+
+
+						$sql = "SELECT count(ESS_JOB_STATUS) FROM essential_info WHERE ESS_JOB_STATUS='In Service' " . $con;
+
+
 
 						$result = mysql_query($sql);
+
+
+
 						$values = mysql_fetch_assoc($result);
-						$num_rows = $values['total'];
+
+
+
+						$num_rows = $values['count(ESS_JOB_STATUS)'];
+
+
+
 						echo $num_rows;
+
+
+
 					?>
 
+
+
+
+
+
+
 					</div>
+
+
+
 				</div>
+
+
+
 			</a>
+
+
+
 		</div>
 
 
@@ -1117,26 +1223,140 @@ while ($dd = mysql_fetch_object($query)) {
 
 		<div class="col-md-2 col-sm-4 col-xs-6" style="padding-left:5px; padding-right:5px;">
 
+
+
 			<a target="_blank">
+
+
+
 				<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 tile_stats_count pt-2 pb-2">
+
+
+
+					<p class="font bold" style="margin:0px;" align="center"><!--<i class="fa fa-user"></i>--> Not in Service </p>
+
+
+
+					<div class="count big-font" align="center"> <i class="fas fa-users-slash"></i>
+
+
+
+
+
+
+
+					<?
+
+
+
+						$sql = "SELECT count(ESS_JOB_STATUS) FROM essential_info WHERE ESS_JOB_STATUS='Not In Service' " . $con;
+
+
+
+						$result = mysql_query($sql);
+
+
+
+						$values = mysql_fetch_assoc($result);
+
+
+
+						$num_rows = $values['count(ESS_JOB_STATUS)'];
+
+
+
+						echo $num_rows;
+
+
+
+					?>
+
+
+
+					</div>
+
+
+
+				</div>
+
+
+
+			</a>
+
+
+
+		</div>
+
+
+
+
+
+
+
+		<div class="col-md-2 col-sm-4 col-xs-6" style="padding-left:5px; padding-right:5px;">
+
+
+
+			<a target="_blank">
+
+
+
+				<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 tile_stats_count pt-2 pb-2">
+
+
 
 					<p class="font bold" style="margin:0px;" align="center"><!--<i class="fa fa-user"></i>--> Total Males </p>
 
+
+
+
+
+
+
 					<div class="count big-font" align="center"> <i class="fas fa-male"></i>
+
+
+
+
+
+
 
 						<?
 
-						$sql = "SELECT count(p.PBI_ID) as total FROM personnel_basic_info p
-						INNER JOIN salary_info s ON s.PBI_ID = p.PBI_ID
-						WHERE PBI_SEX='Male' and PBI_JOB_STATUS='In Service' and s.basic_salary IS NOT NULL AND s.basic_salary <> ''" . $con;
+
+
+						$sql = "SELECT count(PBI_SEX) FROM personnel_basic_info WHERE PBI_SEX='Male' and PBI_JOB_STATUS='In Service' " . $con;
+
+
 
 						$result = mysql_query($sql);
+
+
+
 						$values = mysql_fetch_assoc($result);
-						$num_rows = $values['total'];
+
+
+
+						$num_rows = $values['count(PBI_SEX)'];
+
+
+
 						echo $num_rows;
+
+
+
 						?>
+
+
+
 					</div>
+
+
+
 				</div>
+
+
+
 			</a>
 
 
@@ -1185,9 +1405,7 @@ while ($dd = mysql_fetch_object($query)) {
 
 
 
-						$sql = "SELECT count(p.PBI_ID) as total FROM personnel_basic_info p
-						INNER JOIN salary_info s ON s.PBI_ID = p.PBI_ID
-						WHERE PBI_SEX='Female' and PBI_JOB_STATUS='In Service' and s.basic_salary IS NOT NULL AND s.basic_salary <> ''" . $con;
+						$sql = "SELECT count(PBI_SEX) FROM personnel_basic_info WHERE PBI_SEX='Female' and PBI_JOB_STATUS='In Service' " . $con;
 
 
 
@@ -1199,7 +1417,7 @@ while ($dd = mysql_fetch_object($query)) {
 
 
 
-						$num_rows = $values['total'];
+						$num_rows = $values['count(PBI_SEX)'];
 
 
 
@@ -1244,36 +1462,93 @@ while ($dd = mysql_fetch_object($query)) {
 
 
 				<div class="col-sm-12 col-md-12 col-lg-12 col-xs-12 tile_stats_count pt-2 pb-2">
+
+
+
 					<p class="font bold" style="margin:0px;" align="center"><!--<i class="fa fa-user"></i>--> Probationary Period </p>
 
-					<div class="count big-font" align="center"> <i class="fa fa-users-cog"></i>			
+
+
+					<div class="count big-font" align="center"> <i class="fa fa-users-cog"></i>
+
+
+
+						
+
+
 
 					<?
 
-						$sql = "SELECT count(PBI_ID) FROM essential_info 
-						WHERE EMPLOYMENT_TYPE = 'Probationary' and ESS_JOB_STATUS='In Service'" . $con;
-						
-						
+
+
+						$sql = "SELECT count(ESSENTIAL_JOINING_DATE) FROM essential_info WHERE `ESSENTIAL_JOINING_DATE` > '2022-06-00' " . $con;
+
+
+
 						$result = mysql_query($sql);
+
+
+
 						$values = mysql_fetch_assoc($result);
-						$num_rows = $values['count(PBI_ID)'];
+
+
+
+						$num_rows = $values['count(ESSENTIAL_JOINING_DATE)'];
+
+
+
 						echo $num_rows;
+
+
 
 					?>
 
 
+
 					</div>
+
+
+
 				</div>
+
+
+
 			</a>
+
+
+
 		</div>
+
+
+
 	</div>
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="row row-notifi">
+
+
+
 	<h5 style="text-align:center; font-weight:bold; background-color:#c3b72f; color:#333; padding-bottom:5px; padding-top:5px;">
 
+
+
 		Probation Period Notification
+
+
+
 	</h5>
 
 
@@ -2897,14 +3172,15 @@ while ($dd = mysql_fetch_object($query)) {
 								<ol class="y-axis-labels">
 							  		<li class="zero"><b>0</b></li>
 
-							  		<li><b>30</b></li>
+							  		<li><b>20</b></li>
+
+							  		<li><b>40</b></li>
 
 							  		<li><b>60</b></li>
 
-							  		<li><b>90</b></li>
+							  		<li><b>80</b></li>
 
-							  		<li><b>120</b></li>
-					
+							  		<li><b>100</b></li>
 								</ol>
 
 						  	</th>
@@ -2915,19 +3191,17 @@ while ($dd = mysql_fetch_object($query)) {
         <?
 			$count_total_emp = find_a_field('personnel_basic_info','count(PBI_ID)','PBI_JOB_STATUS = "In Service"');
 
-			$sqld = "SELECT p.PBI_DEPARTMENT, p.JOB_LOCATION, d.dep_sort_name_chart, proj.PROJECT_SHORT_NAME, COUNT(p.PBI_ID) AS tot_emp 
-			FROM personnel_basic_info p 
-			LEFT JOIN project proj ON proj.PROJECT_ID = p.JOB_LOCATION 
-			LEFT JOIN department d ON d.DEPT_ID = p.PBI_DEPARTMENT 
-			INNER JOIN salary_info s ON s.PBI_ID = p.PBI_ID 
-			WHERE p.PBI_JOB_STATUS = 'In Service' AND s.basic_salary IS NOT NULL AND s.basic_salary <> '' GROUP BY p.PBI_DEPARTMENT, p.JOB_LOCATION 
-			ORDER BY d.dep_sort_name_chart ASC, proj.PROJECT_SHORT_NAME ASC";
+			$sqld = "SELECT p.PBI_DEPARTMENT,p.JOB_LOCATION,d.dep_sort_name_chart,proj.PROJECT_SHORT_NAME, count(p.PBI_ID) as tot_emp
+
+			FROM personnel_basic_info p left join project proj on proj.PROJECT_ID=p.JOB_LOCATION left join department d on d.DEPT_ID=p.PBI_DEPARTMENT
+
+			WHERE p.PBI_JOB_STATUS = 'In Service' GROUP BY p.PBI_DEPARTMENT,p.JOB_LOCATION order by p.PBI_DEPARTMENT asc";
 
 			$qry = mysql_query($sqld);
 
 			while($data=mysql_fetch_object($qry)){
 
-			$percent = ($data->tot_emp/$count_total_emp)*300;
+			$percent = ($data->tot_emp/$count_total_emp)*200;
 
 			$type = $data->dep_sort_name_chart;
 
@@ -4951,57 +5225,201 @@ while ($dd = mysql_fetch_object($query)) {
 
 <script>
 
+
+
     window.onload = function() {
+
+
+
         var chart = new CanvasJS.Chart("barVertical", {
+
+
+
             animationEnabled: true,
+
+
+
             toolTip: {
+
+
+
                 shared: true
+
+
+
             },
+
+
+
             legend: {
+
+
+
                 cursor: "pointer",
+
+
+
                 itemclick: toggleDataSeries
+
+
+
             },
+
+
+
             data: [
+
+
+
                 {
+
+
+
                     type: "column",
+
+
+
                     name: "New Hire",
+
+
+
                     legendText: "New Hire",
+
+
+
                     showInLegend: true,
+
+
+
                     dataPoints: <?php echo json_encode(fetchDataPoints("join")); ?>
+
+
+
                 },
+
+
+
                 {
+
+
+
                     type: "column",
+
+
+
                     name: "Turnover Rate",
+
+
+
                     legendText: "Turnover",
+
+
+
                     axisYType: "secondary",
+
+
+
                     showInLegend: true,
+
+
+
                     dataPoints: <?php echo json_encode(fetchTurnoverDataPoints()); ?>
+
+
+
                 },
+
+
+
                 {
+
+
+
                     type: "column",
+
+
+
                     name: "Relieved",
+
+
+
                     legendText: "Relieved",
+
+
+
                     axisYType: "secondary",
+
+
+
                     showInLegend: true,
+
+
+
                     dataPoints: <?php echo json_encode(fetchDataPoints("resign")); ?>
+
+
+
                 }
+
+
+
             ]
+
+
+
         });
+
+
+
+
+
+
 
         chart.render();
 
+
+
+
+
+
+
         function toggleDataSeries(e) {
+
+
+
             if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+
+
+
                 e.dataSeries.visible = false;
+
+
+
             } else {
+
+
+
                 e.dataSeries.visible = true;
+
+
+
             }
+
+
+
             chart.render();
+
+
+
         }
+
+
+
     }
 
-</script>
 
+
+</script>
 
 
 

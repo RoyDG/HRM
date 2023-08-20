@@ -397,7 +397,7 @@ if(!isset($$unique)) $$unique=db_last_insert_id($table,$unique);
 
                   <td nowrap class="oe_form_group_cell">
 					  <span class="oe_form_group_cell oe_form_group_cell_label">
-						  Reduce Salary : 
+						  Reduce Amount : 
 					  </span>
 					</td>
 

@@ -1662,7 +1662,7 @@ bottom:0px;
 
 
 
-                <td valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="3"  style="font-size:13px">
+                <td width="63%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="3"  style="font-size:13px">
 
 
 
@@ -1830,7 +1830,7 @@ bottom:0px;
 
 
 
-                <td width="30%"><table width="100%" border="0" cellspacing="0" cellpadding="3"  style="font-size:13px">
+                <td width="37%"><table width="100%" border="0" cellspacing="0" cellpadding="3"  style="font-size:13px">
 
 
 

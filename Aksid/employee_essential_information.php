@@ -1512,7 +1512,7 @@ function reportingAuth()
 
 
 
-                                                        <td class="oe_form_group_cell"><span class="oe_form_group_cell oe_form_group_cell_label">Job Location  :</span></td>
+                                                        <td class="oe_form_group_cell"><span class="oe_form_group_cell oe_form_group_cell_label">Job Location/Project :</span></td>
 
 
 

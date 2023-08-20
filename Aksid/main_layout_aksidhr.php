@@ -632,7 +632,7 @@
 
 
 
-                    <li><a href="../hrm/demotion.php">Demotion/Salary Reduction</a></li>
+                    <li><a href="../hrm/demotion.php">Demotion</a></li>
 
 
 
@@ -695,7 +695,7 @@
 
                     <li><a href="../attendence/roster_view_sync_ho.php"> IN OUT Sync</a></li>
 
-                    <li><a href="../attendence/leave_od_sync.php">Leave & OD Sync</a></li>
+                    <li><a href="../attendence/leave_od_sync.php">Leave Od Sync</a></li>
 
                     <li><a href="../attendence/roster_sync_late_early.php">Late/Early Calculation </a></li>
 
@@ -757,7 +757,7 @@
 
 
 
-                    <li><a href="../payroll/advance_payment.php">Advance Salary / IOU</a></li>
+                    <li><a href="../payroll/advance_payment.php">Advance Salary / Iou</a></li>
 
 
 

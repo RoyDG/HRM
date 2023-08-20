@@ -19,14 +19,177 @@ if(isset($_POST['submit'])&&isset($_POST['report'])&&$_POST['report']>0)
 	if($_POST['name']!='')
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	$con.=' and a.PBI_NAME like "%'.$_POST['name'].'%"';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	if($_POST['PBI_ORG']!='')
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	$con.=' and a.PBI_ORG = "'.$_POST['PBI_ORG'].'"';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	if($_POST['department']!='')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	$con.=' and a.PBI_DEPARTMENT = "'.$_POST['department'].'"';
@@ -62071,7 +62234,7 @@ $last_date = $_POST['year'].'-'.$_POST['mon'].'-'.'31';
       <td align="right"><? echo ($data->total_earning>0)? $data->total_earning : '';        $total_cash_earning = $total_cash_earning + $data->total_earning;?></td>
       <td align="right"><? echo ($data->total_payable>0)? $data->total_payable : '';        $total_cash = $total_cash + $data->total_payable;?></td>
       <td><?=($data->cash>0)? $data->cash : '';?></td>
-      <td nowrap="nowrap" style="width:110px;">&nbsp;&nbsp;&nbsp;<?=($data->card_no>0)? $data->card_no : '';?>&nbsp;&nbsp;&nbsp;</td>
+      <td><?=($data->card_no>0)? $data->card_no : '';?></td>
     <?
 $hr_action_remarks = find_a_field('admin_action_detail','ADMIN_ACTION_SUBJECT','EFFECT_MON="'.$_POST['mon'].'" and EFFECT_YEAR="'.$_POST['year'].'" and PBI_ID="'.$data->PBI_ID.'" ');
   ?>
@@ -65674,7 +65837,129 @@ if($_POST['report']==2019){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	 $report="";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	?>
 <table style="width: auto; margin: 0 auto; font-size: 20px;text-align:center;" border="1" bordercolor="#FFFFFF">
@@ -65706,25 +65991,264 @@ if($_POST['report']==2019){
   <tbody>
     <?
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       if($_POST['year']!="" && $_POST['mon']!=""){
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	  $join_con = ' and a.PBI_DOJ between "'.$_POST['year'].'-'.$_POST['mon'].'-1" and "'.$_POST['year'].'-'.$_POST['mon'].'-30"';}
-	
-	else{
-		$join_con = ' and a.PBI_DOJ between "'.$_POST['year'].'-01-1" and 
-		"'.$_POST['year'].'-12-30"';
-	}
 
-	  $basic_sql='select i.*, a.PBI_ID,a.PBI_CODE, a.PBI_NAME, a.PBI_DESIGNATION , a.PBI_DEPARTMENT,
-	  a.PBI_DOJ,a.JOB_LOCATION, d.DESG_SHORT_NAME as Designation,
-	  
-		e.DEPT_SHORT_NAME as Department,a.PBI_MOBILE as mobile,
-		
-		a.PBI_EMAIL as email, a.JOB_LOCATION
-		
-      	from designation d, department e, personnel_basic_info a, salary_info i
 
-           where a.PBI_DESIGNATION = d.DESG_ID and a.PBI_DEPARTMENT=e.DEPT_ID and i.PBI_ID=a.PBI_ID '.$join_con.' group by a.PBI_ID';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	  $basic_sql='select i.*, a.PBI_ID,a.PBI_CODE, a.PBI_NAME, a.PBI_DESIGNATION , a.PBI_DEPARTMENT, a.PBI_DOJ,a.JOB_LOCATION, d.DESG_SHORT_NAME as Designation,
+		e.DEPT_SHORT_NAME as            Department,a.PBI_MOBILE as mobile,
+
+
+
+a.PBI_EMAIL as email, a.JOB_LOCATION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            from designation d, department e, personnel_basic_info a, salary_info i
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           where  a.PBI_DESIGNATION = d.DESG_ID and a.PBI_DEPARTMENT=e.DEPT_ID and i.PBI_ID=a.PBI_ID '.$join_con.'  group by a.PBI_ID';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	 $basic_query = mysql_query($basic_sql);
 
@@ -75603,17 +76127,12 @@ $edate = $_POST['year'].'-'.$_POST['mon'].'-31';
 
 	?>
 <table style="width: auto; margin: 0 auto; font-size: 20px;text-align:center;" border="1" bordercolor="#FFFFFF">
+  <tr></tr>
   <tr>
-    <td style="border:0px solid white;"><strong>AKSID CORPORATION LTD.</strong></td>
+    <td style="border:0px solid white;"><?=$str?></td>
   </tr>
-  <tr>
-    <td style="border:0px solid white;"><strong>Absent Report</strong></td>
-  </tr>
-  
 </table>
-
 <table style="width: 80%; margin: 0 auto;text-align:center;" cellpadding="0" cellspacing="0" class="oe_list_content">
-	
   <thead>
     <tr class="oe_list_header_columns" style=" text-align:center; font-size:12px;" align="center">
       <th>S/L</th>
@@ -75628,16 +76147,16 @@ $edate = $_POST['year'].'-'.$_POST['mon'].'-31';
   <tbody>
     <?
 
-//and  p.PBI_DOJ < "'.$sdate.'"
+
 
 
       if($_POST['year']!="" && $_POST['mon']!=""){
 
        $join_con = ' and j.ESSENTIAL_RESIG_DATE between "'.$_POST['year'].'-'.$_POST['mon'].'-1" and "'.$_POST['year'].'-'.$_POST['mon'].'-31"';}
 
- $all = 'select p.PBI_NAME,p.PBI_ID,p.PBI_CODE,desg.DESG_DESC as designation,p.PBI_DOJ, dept.DEPT_DESC as department
+$all = 'select p.PBI_NAME,p.PBI_ID,p.PBI_CODE,desg.DESG_DESC as designation,p.PBI_DOJ, dept.DEPT_DESC as department
 from personnel_basic_info p, designation desg, department dept,essential_info e
-where p.PBI_ID=e.PBI_ID and p.PBI_DESIGNATION=desg.DESG_ID and p.PBI_DEPARTMENT=dept.DEPT_ID and e.ATTENDENCE_TYPE = "Auto" 
+where p.PBI_ID=e.PBI_ID and p.PBI_DESIGNATION=desg.DESG_ID and p.PBI_DEPARTMENT=dept.DEPT_ID and e.ATTENDENCE_TYPE = "Auto" and  p.PBI_DOJ < "'.$sdate.'"
 and p.PBI_JOB_STATUS="In Service" '.$b_con.' order by p.PBI_ID';
 
 
@@ -76522,25 +77041,341 @@ if($_POST['report']==226655)
 
 
 
-if($_POST['designation'] !='')
-
-$leave_con = ' and p.PBI_DESIGNATION ="'.$_POST['designation'].'"';
 
 
 
 
 if($_POST['department'] !='')
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $leave_con = ' and p.PBI_DEPARTMENT="'.$_POST['department'].'"';
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if($_POST['JOB_LOCATION'] !='')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $leave_con .= ' and p.JOB_LOCATION="'.$_POST['JOB_LOCATION'].'"';
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 if($_POST['year'] !='')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 $leave_con .= ' and l.year="'.$_POST['year'].'"';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -98256,7 +99091,7 @@ $last_y = $_POST['year'];
     </tr>
   </thead>
 </table>
-<table  width="100%" cellspacing="0" id="ExportTable"  cellpadding="2" border="0">
+<table  width="100%" cellspacing="0" cellpadding="2" border="0">
   <thead>
     <tr>
       <th>Debit Account</th>
@@ -100249,7 +101084,7 @@ $last_y = $_POST['year'];
     </tr>
   </thead>
 </table>
-<table  width="100%" cellspacing="0" id="ExportTable"  cellpadding="2" border="0">
+<table  width="100%" cellspacing="0" cellpadding="2" border="0">
   <thead>
     <tr>
       <th style="text-align:center">SL</th>
